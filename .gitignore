@@ -1,0 +1,4 @@
+node_modules
+public/css/style.css*
+public/js
+yarn-error.log

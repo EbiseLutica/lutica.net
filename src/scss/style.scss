@@ -1,0 +1,88 @@
+/*!
+ * Lutica.net Style
+ * (C) 2022 Ebise Lutica all rights reserved.
+ */
+
+@use "sass:math";
+
+html {
+  font-family: "Koruri", sans-serif;
+}
+
+body {
+  background-color: var(--red-2);
+  background-image: repeating-linear-gradient(-75deg, var(--red-1), var(--red-1) 16px, transparent 2px, transparent 48px);
+  min-height: 100vh;
+  background-attachment: fixed;
+  --primary: var(--indigo);
+}
+
+.card.acrylic {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+#profileCard {
+  transform-origin: center center;
+  overflow: visible;
+  transform: rotate(2deg);
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: none;
+  }
+}
+
+a {
+  text-decoration: underline;
+}
+
+.l-article {
+  max-width: 800px;
+  width: 100%;
+  h1 {
+    color: var(--dimmed);
+    font-size: 2rem;
+  }
+  h2 {
+    color: var(--indigo);
+  }
+}
+
+.icon {
+  width: 128px;
+  height: 128px;
+  border: 6px solid var(--white);
+  position: absolute;
+  top: -96px;
+  left: calc(50% - 64px);
+}
+
+.snsButton {
+  display: flex;
+  height: 48px;
+  padding: 16px;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary);
+  color: var(--white);
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.xeltica {
+  display: flex;
+  background: black;
+  color: white;
+  align-items: center;
+  padding-right: 16px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+  > img {
+    width: 64px;
+    height: 64px;
+  }
+}

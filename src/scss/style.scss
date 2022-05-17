@@ -22,10 +22,11 @@ body {
 }
 
 #profileCard {
-  transform-origin: center center;
+  transform-origin: top center;
   overflow: visible;
   transform: rotate(2deg);
   transition: transform 0.3s ease;
+  position: relative;
   &:hover {
     transform: none;
   }

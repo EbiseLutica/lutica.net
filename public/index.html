@@ -4,22 +4,28 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lutica.net</title>
+  <meta name="description" content="海老瀬るちか。いろいろな創作とゲームが好きです。">
   <link rel="stylesheet" href="https://koruri.chillout.chat/koruri.css">
   <link rel="stylesheet" href="./css/xeltica-ui.min.css">
   <link rel="stylesheet" href="./css/style.css">
   <script src="https://kit.fontawesome.com/c7ab6eba70.js" crossorigin="anonymous"></script>
-  <title>Ebise Lutica</title>
+  <script src="./js/main.js"></script>
+  <script src="./js/index.js"></script>
 </head>
-<body class="container vstack f-middle" style="gap: 32px">
+<body>
+  <div class="container vstack f-middle _cloak" style="gap: 32px;">
     <div id="profileCard" class="card shadow-2 pa-2 mb-5">
-      <div class="body pr-5" style="max-width: 600px">
+      <div class="body">
         <header>
           <img class="icon circle shadow-2" src="./assets/lutica.png" alt="lutica">
           <h1 class="text-bold mb-0 text-200">海老瀬 るちか</h1>
           <h2 class="text-dimmed text-125">Ebise Lutica</h2>
         </header>
-        いろいろな創作とゲームが好きです。
-        <main class="pt-3 hstack slim wrap">
+        <p>横浜生まれ・横浜育ちのウェブエンジニア。</p>
+        <p>好きな料理はエビ料理。好きな寿司は焼きサーモン。</p>
+        <a href="/avatar" class="btn link"><i class="fas fa-arrow-right"></i> アバターについて</a>
+        <nav class="pt-3 hstack slim wrap">
           <a href="https://twitter.com/EbiseLutica" rel="noopener noreferrer" target="_blank" class="snsButton clickable" style="--primary: #1DA1F2">
             <i class="fab fa-twitter mr-1"></i> Follow
           </a>
@@ -29,7 +35,7 @@
           <button id="discordButton" class="snsButton clickable" style="--primary: #5865F2" data-discord-tag="Lutica#7081">
             <i class="fab fa-discord mr-1"></i> Lutica#7081
           </button>
-        </main>
+        </nav>
       </div>
     </div>
     
@@ -113,6 +119,6 @@
     <footer class="text-indigo shadow-t">
       (C) 2022 Ebise Lutica all rights reserved.
     </footer>
-    <script src="./js/main.js"></script>
+  </div>
 </body>
 </html>

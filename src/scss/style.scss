@@ -11,19 +11,80 @@ html {
 
 body {
   background-color: var(--red-2);
-  background-image: repeating-linear-gradient(-75deg, var(--red-1), var(--red-1) 16px, transparent 2px, transparent 48px);
+  background-image: repeating-linear-gradient(-90deg, var(--red-1), var(--red-1) 16px, transparent 2px, transparent 48px);
   min-height: 100vh;
   background-attachment: fixed;
   --primary: var(--indigo);
 }
 
+.vstack:not(.dense) {
+  gap: 32px;
+}
+
+.card {
+  background: var(--gray-1);
+}
+
+._cloak {
+  transition: all 0.5s ease;
+  opacity: 0;
+  transform: translateY(32px);
+  &._cloak--active {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 #profileCard {
   transform-origin: top center;
+  max-width: 600px;
+  width: 100%;
   overflow: visible;
-  transform: rotate(2deg);
-  transition: transform 0.3s ease;
   position: relative;
-  &:hover {
+}
+
+#avatarCard {
+  display: flex;
+  max-width: 1024px;
+  width: 100%;
+  > img {
+    animation: fadeUp 0.8s ease both 0.24s;
+  }
+  > article {
+    animation: fadeLeft 0.9s ease both 0.3s;
+  }
+  @media screen and (max-width: 750px) {
+    flex-direction: column;
+    table {
+      width: 100%
+    }
+  }
+}
+
+#luticaart {
+  max-width: 1024px;
+  width: 100%;
+
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
     transform: none;
   }
 }
@@ -36,11 +97,12 @@ a {
   max-width: 800px;
   width: 100%;
   h1 {
-    color: var(--dimmed);
+    color: var(--indigo);
     font-size: 2rem;
   }
   h2 {
     color: var(--indigo);
+    font-size: 1.4rem;
   }
 }
 

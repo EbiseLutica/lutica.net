@@ -22,60 +22,77 @@
           <h1 class="text-bold mb-0 text-200">海老瀬 るちか</h1>
           <h2 class="text-dimmed text-125">Ebise Lutica</h2>
         </header>
-        <p>横浜生まれ・横浜育ちのウェブエンジニア。</p>
-        <p>好きな料理はエビ料理。好きな寿司は焼きサーモン。</p>
-        <a href="/avatar" class="btn link"><i class="fas fa-arrow-right"></i> アバターについて</a>
+        <p>横浜生まれ・横浜育ち、ウェブエンジニア兼同人活動者。</p>
+        <a href="/avatar" class="btn primary outline shadow-2"><i class="fas fa-arrow-right"></i> アバターについて…</a>
         <nav class="pt-3 hstack slim wrap">
-          <a href="https://twitter.com/EbiseLutica" rel="noopener noreferrer" target="_blank" class="snsButton clickable" style="--primary: #1DA1F2">
+          <a class="snsButton clickable shadow-2" href="https://twitter.com/EbiseLutica" rel="noopener noreferrer" target="_blank" style="--primary: #1DA1F2">
             <i class="fab fa-twitter mr-1"></i> Follow
           </a>
-          <a href="https://github.com/Xeltica" rel="noopener noreferrer" target="_blank" class="snsButton clickable" style="--primary: #333">
+          <a class="snsButton clickable shadow-2" href="https://github.com/Xeltica" rel="noopener noreferrer" target="_blank" style="--primary: #333">
             <i class="fab fa-github mr-1"></i> Follow
           </a>
-          <button id="discordButton" class="snsButton clickable" style="--primary: #5865F2" data-discord-tag="Lutica#7081">
+          <button id="discordButton" class="snsButton clickable shadow-2" data-discord-tag="Lutica#7081" style="--primary: #5865F2">
             <i class="fab fa-discord mr-1"></i> Lutica#7081
           </button>
         </nav>
       </div>
     </div>
     
-    <a class="xeltica" href="https://xeltica.work" target="_blank" rel="noopener noreferrer">
+    <a class="xeltica clickable shadow-2" href="https://xeltica.work" target="_blank" rel="noopener noreferrer">
       <img src="./assets/xeltica-dark.png">
       Xeltica Studio
     </a>
 
+    <article class="favorite l-article card shadow-2 pa-2">
+      <div class="pa-2">
+        <h1>好きなもの</h1>
+        <ul class="vstack" style="list-style: none; gap: 8px">
+          <li class="__timelineParallax"><i class="fas fa-burger fa-fw text-primary" title="料理"></i> エビ料理</li>
+          <li class="__timelineParallax"><i class="fas fa-burger fa-fw text-primary" title="料理"></i> 寿司</li>
+          <li class="__timelineParallax"><i class="fas fa-burger fa-fw text-primary" title="料理"></i> ラーメン</li>
+          <li class="__timelineParallax"><i class="fas fa-wand-sparkles fa-fw text-primary" title="趣味"></i> DTM</li>
+          <li class="__timelineParallax"><i class="fas fa-wand-sparkles fa-fw text-primary" title="趣味"></i> ゲーム制作</li>
+          <li class="__timelineParallax"><i class="fas fa-microphone fa-fw text-primary" title="アーティスト"></i> YOASOBI / Ayase</li>
+          <li class="__timelineParallax"><i class="fas fa-gamepad fa-fw text-primary" title="ゲーム"></i> Minecraft</li>
+          <li class="__timelineParallax"><i class="fas fa-gamepad fa-fw text-primary" title="ゲーム"></i> Apex Legends</li>
+          <li class="__timelineParallax"><i class="fas fa-gamepad fa-fw text-primary" title="ゲーム"></i> CHUNITHM</li>
+          <li class="__timelineParallax"><i class="fas fa-gamepad fa-fw text-primary" title="ゲーム"></i> maimai</li>
+        </ul>
+      </div>
+    </article>
+
     <article id="timeline" class="l-article card shadow-2 pa-2">
       <div class="pa-2">
         <h1>経歴</h1>
-        <section class="tl-2011">
+        <section id="tl-2011" class="__timelineParallax">
           <h2>2011年</h2>
           <ul>
             <li>学校の自由課題として提出することを目的に、<abbr title="Desktop Music。コンピューターで音楽を作ること。">DTM</abbr>に触れる。</li>
             <li>プログラミングに触れる。ゲームを作って近所の友人に遊んでもらうなどしていた。</li>
           </ul>
         </section>
-        <section class="tl-2012">
+        <section id="tl-2012" class="__timelineParallax">
           <h2>2012年</h2>
           <ul>
             <li>ウェブ上に初めて創作物を公開する。</li>
             <li>Minecraftにハマり、MOD開発などを経験する。</li>
           </ul>
         </section>
-        <section class="tl-2014">
+        <section id="tl-2014" class="__timelineParallax">
           <h2>2014-2015年</h2>
           <ul>
             <li>初めてTwitterアカウントを開設する。</li>
             <li>C#言語に触れる。某チャットアプリに自動投稿するBotを開発して遊ぶなどしていた。</li>
           </ul>
         </section>
-        <section class="tl-2016">
+        <section id="tl-2016" class="__timelineParallax">
           <h2>2016-2017年</h2>
           <ul>
             <li>開発したゲームを学祭で展示する。</li>
             <li>「Xeltica」と名乗り始める。</li>
           </ul>
         </section>
-        <section class="tl-2018">
+        <section id="tl-2018" class="__timelineParallax">
           <h2>2018年</h2>
           <ul>
             <li>TypeScript, Vue.jsに触れる。</li>
@@ -83,7 +100,7 @@
             <li>Misskeyアカウントを開設する。</li>
           </ul>
         </section>
-        <section class="tl-2019">
+        <section id="tl-2019" class="__timelineParallax">
           <h2>2019年</h2>
           <ul>
             <li>ゲームエンジン「<a href="https://github.com/Xeltica/DotFEather" rel="noopener noreferrer" target="_blank">DotFeather</a>」を開発する。</li>
@@ -91,13 +108,14 @@
             <li>MisskeyベースのSNS「Groundpolis」を開発・運営開始。</li>
           </ul>
         </section>
-        <section class="tl-2020">
+        <section id="tl-2020" class="__timelineParallax">
           <h2>2020年</h2>
           <ul>
             <li>Misskeyのための便利ツール「Misskey Tools」を開発・運営開始。</li>
+            <li>コロナ渦を経験する。</li>
           </ul>
         </section>
-        <section class="tl-2021">
+        <section id="tl-2021" class="__timelineParallax">
           <h2>2021年</h2>
           <ul>
             <li>Minecraftサーバー「XelticaMC」を開始。</li>
@@ -105,9 +123,10 @@
             <li>サークル「Xeltica」を立ち上げ、主催となる。</li>
             <li>個人名義を「海老瀬るちか」に変更。</li>
             <li>YouTubeチャンネルを作り直し、活動再開。</li>
+            <li>Apex Legendsにハマる。</li>
           </ul>
         </section>
-        <section class="tl-2022">
+        <section id="tl-2022" class="__timelineParallax">
           <h2>2022年</h2>
           <ul>
             <li>1年勤めた職場を退職し、転職。</li>

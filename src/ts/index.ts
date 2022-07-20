@@ -7,7 +7,7 @@ const handleProfileCard = () => {
   };
 
   const profileCard = document.getElementById("profileCard");
-  if (!profileCard) throw new Error("いや～～～、profileCardが見つからないのはバグで…");
+  if (!profileCard) return;
   centerize(profileCard);
 
   const observer = new ResizeObserver(() => {
@@ -18,8 +18,7 @@ const handleProfileCard = () => {
 
 const handleDiscordButton = () => {
   const discordButton = document.getElementById("discordButton");
-  if (!discordButton) throw new Error("いや～～～、profileCardが見つからないのはバグで…");
-  discordButton.addEventListener("click", () => {
+  discordButton?.addEventListener("click", () => {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(discordButton.dataset.discordTag ?? "").then(() => {
         alert("Discordタグをクリップボードにコピーしました！");

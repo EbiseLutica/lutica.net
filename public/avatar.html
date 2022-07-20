@@ -9,12 +9,54 @@
   <link rel="stylesheet" href="https://koruri.chillout.chat/koruri.css">
   <link rel="stylesheet" href="./css/xeltica-ui.min.css">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./lib/photoswipe.css">
+  <link rel="stylesheet" href="https://unpkg.com/photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css">
   <script src="https://kit.fontawesome.com/c7ab6eba70.js" crossorigin="anonymous"></script>
   <script src="./js/main.js"></script>
+  <script type="module">
+    import PhotoSwipeLightbox from './lib/photoswipe-lightbox.esm.js';
+    import PhotoSwipeDynamicCaption from 'https://unpkg.com/photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.esm.js';
+
+    const gallery = document.getElementById('gallery');
+    fetch('/assets/fa/def.json').then(t => t.json()).then(data => {
+      data.forEach(d => {
+        const {path, author} = d;
+        const [w, h] = d.size;
+        const a = document.createElement('a');
+        const img = document.createElement('img');
+        const span = document.createElement('span');
+        a.className = 'item';
+        a.href = img.src = '/assets/fa/' + path;
+        a.dataset.pswpWidth = String(w);
+        a.dataset.pswpHeight = String(h);
+        a.target = '_blank';
+        a.append(img);
+        span.className = 'pswp-caption-content';
+        if (author.myself) {
+          span.innerHTML = '自作';
+        } else {
+          span.innerHTML = `描いてくれた${author.kind ?? '人'}：<a href="${author.url}" target="_blank" rel="noopener noreferrer">${author.name}様</a>`;
+        }
+        a.append(span);
+        gallery.append(a);
+      });
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: '#gallery',
+        children: '.item',
+        pswpModule: () => import('./lib/photoswipe.esm.js')
+      });
+
+      const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+        // Plugins options, for example:
+        type: 'auto',
+      });
+      lightbox.init();
+    });
+  </script>
 </head>
 <body>
-  <header class="container" style="position: sticky; top: 0">
-    <div class="navbar hstack shadow-2 bg-panel rounded">
+  <header class="container" style="position: sticky; top: 0; z-index:10000">
+    <div class="navbar hstack shadow-2 bg-panel rounded lutica-navbar">
       <h1 class="mr-1 navbar-title text-100">
         <span class="mr-1"><i class="fas fa-shrimp text-red"></i></span>
         <a href="/" class="text-bold">海老瀬 るちか</a>
@@ -57,8 +99,15 @@
     </div>
     <div id="luticaart" class="card shadow-2 dark">
       <div class="body">
-        <h1>ギャラリー</h1>
-        <p>工事中</p>
+        <h1><i class="fas fa-image text-pink"></i> ギャラリー</h1>
+        <p class="mb-5">
+          ファンアート募集中です。
+          TwitterやFediverseで、ハッシュタグ
+          <strong class="text-primary">#LuticaArt<!-- Aが… --></strong>
+          をつけて投稿してね。
+        </p>
+        <div id="gallery" class="gallery">
+        </div>
       </div>
     </div>
     <footer class="text-center text-indigo shadow-t py-5">

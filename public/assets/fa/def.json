@@ -56,5 +56,12 @@
             "name": "ちょこ",
             "url": "https://pawoo.net/@choco9510_"
         }
+    }, {
+        "path": "art-9.png",
+        "size": [400, 400],
+        "author": {
+            "name": "しょこ",
+            "url": "https://misskey.m544.net/@choco"
+        }
     }
 ]

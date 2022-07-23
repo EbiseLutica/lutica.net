@@ -53,6 +53,17 @@
             </tr>
           </tbody>
         </table>
+        <div class="hstack slim" id="shiryo">
+          <a href="/assets/shiryo/front.jpg" class="item rounded" data-pswp-width="1334" data-pswp-height="1920">
+            <img src="/assets/shiryo/front.jpg" alt="">
+          </a>
+          <a href="/assets/shiryo/back.png" class="item rounded" data-pswp-width="1334" data-pswp-height="1920">
+            <img src="/assets/shiryo/back.png" alt="">
+          </a>
+          <a href="/assets/shiryo/right.png" class="item rounded" data-pswp-width="1334" data-pswp-height="1920">
+            <img src="/assets/shiryo/right.png" alt="">
+          </a>
+        </div>
       </article>
     </div>
     <div id="luticaart" class="card shadow-2">
@@ -76,6 +87,7 @@
   <script type="module">
     import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5.3.0/dist/photoswipe-lightbox.esm.js';
     import PhotoSwipeDynamicCaption from 'https://unpkg.com/photoswipe-dynamic-caption-plugin@1.2.0/photoswipe-dynamic-caption-plugin.esm.js';
+    import PhotoSwipe from 'https://cdn.jsdelivr.net/npm/photoswipe@5.3.0/dist/photoswipe.esm.js';
 
     const gallery = document.getElementById('gallery');
     fetch('/assets/fa/def.json').then(t => t.json()).then(data => {
@@ -103,13 +115,19 @@
       const lightbox = new PhotoSwipeLightbox({
         gallery: '#gallery',
         children: '.item',
-        pswpModule: () => import('https://cdn.jsdelivr.net/npm/photoswipe@5.3.0/dist/photoswipe.esm.js')
+        pswpModule: PhotoSwipe,
       });
 
       const captionPlugin = new PhotoSwipeDynamicCaption(lightbox);
       window.captionPlugin = captionPlugin;
 
       lightbox.init();
+      
+      new PhotoSwipeLightbox({
+        gallery: '#shiryo',
+        children: '.item',
+        pswpModule: PhotoSwipe,
+      }).init()
     });
   </script>
 </body>

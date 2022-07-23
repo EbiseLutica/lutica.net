@@ -93,10 +93,18 @@ body {
   }
 }
 
+#shiryo {
+  .item {
+    overflow: hidden;
+    img {
+      width: 96px;
+    }
+  }
+}
+
 #luticaart {
   max-width: 1024px;
   width: 100%;
-
 }
 
 @keyframes cardRotate {

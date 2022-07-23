@@ -9,50 +9,8 @@
   <link rel="stylesheet" href="https://koruri.chillout.chat/koruri.css">
   <link rel="stylesheet" href="./css/xeltica-ui.min.css">
   <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./lib/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.3.0/dist/photoswipe.css">
   <link rel="stylesheet" href="https://unpkg.com/photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css">
-  <script src="https://kit.fontawesome.com/c7ab6eba70.js" crossorigin="anonymous"></script>
-  <script src="./js/main.js"></script>
-  <script type="module">
-    import PhotoSwipeLightbox from './lib/photoswipe-lightbox.esm.js';
-    import PhotoSwipeDynamicCaption from 'https://unpkg.com/photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.esm.js';
-
-    const gallery = document.getElementById('gallery');
-    fetch('/assets/fa/def.json').then(t => t.json()).then(data => {
-      data.forEach(d => {
-        const {path, author} = d;
-        const [w, h] = d.size;
-        const a = document.createElement('a');
-        const img = document.createElement('img');
-        const span = document.createElement('span');
-        a.className = 'item';
-        a.href = img.src = '/assets/fa/' + path;
-        a.dataset.pswpWidth = String(w);
-        a.dataset.pswpHeight = String(h);
-        a.target = '_blank';
-        a.append(img);
-        span.className = 'pswp-caption-content';
-        if (author.myself) {
-          span.innerHTML = '自作';
-        } else {
-          span.innerHTML = `描いてくれた${author.kind ?? '人'}：<a href="${author.url}" target="_blank" rel="noopener noreferrer">${author.name}様</a>`;
-        }
-        a.append(span);
-        gallery.append(a);
-      });
-      const lightbox = new PhotoSwipeLightbox({
-        gallery: '#gallery',
-        children: '.item',
-        pswpModule: () => import('./lib/photoswipe.esm.js')
-      });
-
-      const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
-        // Plugins options, for example:
-        type: 'auto',
-      });
-      lightbox.init();
-    });
-  </script>
 </head>
 <body>
   <header class="container" style="position: sticky; top: 0; z-index:10000">
@@ -106,10 +64,6 @@
           <strong class="text-primary">#LuticaArt<!-- Aが… --></strong>
           をつけて投稿してね。
         </p>
-        <aside class="alert mb-2 bg-warn">
-          <i class="icon fas fa-circle-exclamation"></i>
-          本来、描いてくれた方の名前も掲載しているのですが、不具合で表示されていません（修正中です）
-        </aside>
         <div id="gallery" class="gallery"></div>
       </div>
     </div>
@@ -117,5 +71,46 @@
       (C) 2022 Ebise Lutica all rights reserved.
     </footer>
   </div>
+  <script src="https://kit.fontawesome.com/c7ab6eba70.js" crossorigin="anonymous"></script>
+  <script src="./js/main.js"></script>
+  <script type="module">
+    import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5.3.0/dist/photoswipe-lightbox.esm.js';
+    import PhotoSwipeDynamicCaption from 'https://unpkg.com/photoswipe-dynamic-caption-plugin@1.2.0/photoswipe-dynamic-caption-plugin.esm.js';
+
+    const gallery = document.getElementById('gallery');
+    fetch('/assets/fa/def.json').then(t => t.json()).then(data => {
+      data.forEach(d => {
+        const {path, author} = d;
+        const [w, h] = d.size;
+        const a = document.createElement('a');
+        const img = document.createElement('img');
+        const span = document.createElement('span');
+        a.className = 'item';
+        a.href = img.src = '/assets/fa/' + path;
+        a.dataset.pswpWidth = String(w);
+        a.dataset.pswpHeight = String(h);
+        a.target = '_blank';
+        a.append(img);
+        span.className = 'pswp-caption-content';
+        if (author.myself) {
+          span.innerHTML = '自作';
+        } else {
+          span.innerHTML = `描いてくれた${author.kind ?? '人'}：<a href="${author.url}" target="_blank" rel="noopener noreferrer">${author.name}様</a>`;
+        }
+        a.append(span);
+        gallery.append(a);
+      });
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: '#gallery',
+        children: '.item',
+        pswpModule: () => import('https://cdn.jsdelivr.net/npm/photoswipe@5.3.0/dist/photoswipe.esm.js')
+      });
+
+      const captionPlugin = new PhotoSwipeDynamicCaption(lightbox);
+      window.captionPlugin = captionPlugin;
+
+      lightbox.init();
+    });
+  </script>
 </body>
 </html>

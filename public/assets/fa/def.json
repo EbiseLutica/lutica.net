@@ -42,5 +42,12 @@
         "author": {
             "myself": true
         }
+    }, {
+        "path": "art-7.jpg",
+        "size": [809, 861],
+        "author": {
+            "name": "キリンレモン",
+            "url": "https://mk.yopo.work/@kirinnremonn"
+        }
     }
 ]

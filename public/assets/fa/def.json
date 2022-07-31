@@ -63,5 +63,18 @@
             "name": "しょこ",
             "url": "https://misskey.m544.net/@choco"
         }
+    }, {
+        "path": "art-10.png",
+        "size": [1101, 926],
+        "author": {
+            "name": "りふぁ",
+            "url": "https://misskey.m544.net/@choco"
+        }
+    }, {
+        "path": "art-11.png",
+        "size": [1378, 1378],
+        "author": {
+            "name": "れい"
+        }
     }
 ]

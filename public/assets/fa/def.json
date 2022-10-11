@@ -11,7 +11,7 @@
         "size": [1000, 1800],
         "author": {
             "name": "みなしま",
-            "url": "https://groundpolis.app/@meteorshower"
+            "url": "https://mk.shrimpia.network/@meteorshower"
         }
     }, {
         "path": "art-3.png",
@@ -67,14 +67,21 @@
         "path": "art-10.png",
         "size": [1101, 926],
         "author": {
-            "name": "りふぁ",
-            "url": "https://misskey.m544.net/@choco"
+            "name": "しろまれんり",
+            "url": "https://twitter.com/shiromamashiro"
         }
     }, {
         "path": "art-11.png",
         "size": [1378, 1378],
         "author": {
             "name": "れい"
+        }
+    }, {
+        "path": "art-12.jpg",
+        "size": [1706, 1451],
+        "author": {
+            "name": "かがみ",
+            "url": "https://kagamisskey.com/@7n4"
         }
     }
 ]

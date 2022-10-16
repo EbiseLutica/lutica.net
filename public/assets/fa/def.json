@@ -22,14 +22,6 @@
             "kind": "前○腺"
         }
     }, {
-        "path": "art-4.png",
-        "size": [980, 980],
-        "author": {
-            "name": "チロディア",
-            "url": "https://twitter.com/TilloRhythm",
-            "kind": "犬"
-        }
-    }, {
         "path": "art-5.jpg",
         "size": [980, 980],
         "author": {
@@ -75,13 +67,6 @@
         "size": [1378, 1378],
         "author": {
             "name": "れい"
-        }
-    }, {
-        "path": "art-12.jpg",
-        "size": [1706, 1451],
-        "author": {
-            "name": "かがみ",
-            "url": "https://kagamisskey.com/@7n4"
         }
     }
 ]

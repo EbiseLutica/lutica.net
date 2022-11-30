@@ -42,6 +42,11 @@ body {
 
 .lutica-navbar {
   z-index: 20000;
+  h1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 ._cloak {

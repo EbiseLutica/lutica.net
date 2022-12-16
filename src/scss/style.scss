@@ -32,7 +32,7 @@ body {
   --primary-10: var(--red-10);
 }
 
-.vstack:not(.dense) {
+.vstack:not(.dense):not(.slim) {
   gap: 32px;
 }
 
@@ -237,5 +237,14 @@ a {
 
   @media screen and (max-width: 750px) {
     column-count: 2;
+  }
+}
+
+.gaglist {
+  padding: 0;
+  > li {
+    border-radius: var(--radius);
+    padding: 8px;
+    background-color: var(--panel);
   }
 }

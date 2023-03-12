@@ -1,25 +1,15 @@
 {
-  "name": "lutica.net",
-  "version": "1.0.0",
-  "license": "All rights reserved.",
-  "private": true,
+  "name": "",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "build": "run-p build:*",
-    "build:css": "sass src/scss/style.scss public/css/style.css",
-    "build:js": "tsc",
-    "watch": "nodemon",
-    "start": "http-server public -c-1 -o --cors"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "sass": "^1.51.0",
-    "typescript": "^4.6.4"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.23.0",
-    "@typescript-eslint/parser": "^5.23.0",
-    "eslint": "^8.15.0",
-    "http-server": "^14.1.0",
-    "nodemon": "^2.0.16",
-    "npm-run-all": "^4.1.5"
+    "astro": "^2.0.18"
   }
 }

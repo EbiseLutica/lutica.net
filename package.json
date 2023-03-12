@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "lutica-net",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -11,5 +11,8 @@
   },
   "dependencies": {
     "astro": "^2.0.18"
+  },
+  "devDependencies": {
+    "sass": "^1.59.2"
   }
 }

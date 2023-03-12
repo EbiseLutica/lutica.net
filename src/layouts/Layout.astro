@@ -7,12 +7,14 @@ const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<link src="stylesheet" href="https://koruri.chillout.chat/koruri.css">
+		<link href="https://unpkg.com/sanitize.css" rel="stylesheet"/>
 		<title>{title}</title>
 	</head>
 	<body>
@@ -20,16 +22,52 @@ const { title } = Astro.props;
 	</body>
 </html>
 <style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
+html {
+	/* NOTE: http://colormind.io/bootstrap/ で作った */
+	--foreground: #F4F7F3;
+	--background: #211520;
+	--primary: #B93E43;
+	--primaryDark: #651622;
+	--dimmed: #8995A8;
+	--warn: #ecbd15;
+	--success: #6f8e4d;
+	--danger: #f44336;
+
+	background-color: var(--background);
+	color: var(--foreground);
+	font-family: "Koruri", sans-serif;
+	font-size: 18px;
+	line-height: 2;
+}
+
+.text-primary {
+	color: var(--primary);
+}
+.text-primary-dark {
+	color: var(--primaryDark);
+}
+
+.text-secondary {
+	color: var(--secondary);
+}
+
+.hstack {
+	display: flex;
+	gap: 8px;
+}
+
+h1 {
+	margin-top: 0;
+	margin-bottom: 32px;
+}
+
+
+h2 {
+	margin-top: 48px;
+	margin-bottom: 0px;
+}
+
+ a {
+	color: var(--primary);
+ }
 </style>

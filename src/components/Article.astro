@@ -1,0 +1,22 @@
+---
+export interface Props {
+	heading: string;
+    id: string;
+}
+
+const { heading, id } = Astro.props;
+---
+
+<article class="root" id={id}>
+    <h2>{heading}</h2>
+    <slot/>
+</article>
+
+<style>
+	.root {
+        padding: 16px;
+        max-width: 960px;
+        width: 100%;
+        margin: 0 auto;
+    }
+</style>

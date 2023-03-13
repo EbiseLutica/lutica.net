@@ -1,0 +1,72 @@
+---
+import Article from '../components/Article.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="ギャラリー">
+    <Article id="gallery" heading="ギャラリー">
+        <p>
+            ファンアート募集中です。
+            Misskeyでハッシュタグ #LuticaArt<!-- Aが… --> をつけて投稿すると拾われます。
+        </p>
+        <p>作成時は、必ず<a href="/avatar#guideline">キャラクター使用ガイドライン</a>に準拠してください。</p>
+        
+        <a class="button misskey" href="https://misskey.io/tags/luticaart" target="_blank" rel="noopener noreferrer">
+            Misskey.io でもっと探す
+        </a>
+    </Article>
+</Layout>
+
+<style lang="scss">
+.root {
+	display: flex;
+	position: relative;
+    flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+.yon {
+    height: 1em;
+}
+
+.button.misskey {
+    background-color: #86b300;
+    border: none;
+}
+
+.gallery {
+  column-count: 4;
+  column-gap: 8px;
+  column-fill: balance;
+  position: relative;
+  .item {
+    display: block;
+    max-width: 100%;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 8px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    > img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 1080px) {
+    column-count: 3;
+  }
+
+  @media screen and (max-width: 750px) {
+    column-count: 2;
+  }
+}
+</style>

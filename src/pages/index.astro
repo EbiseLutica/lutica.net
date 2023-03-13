@@ -8,7 +8,7 @@ import Likes from '../components/domains/index/likes.mdx';
 import Navbar from '../components/Navbar.astro';
 ---
 
-<Layout>
+<Layout root>
 	<main class="root">
 		<div class="card">
 			<div class="avatar-wrapper">
@@ -31,9 +31,6 @@ import Navbar from '../components/Navbar.astro';
 	<Article id="about" heading="誰？"><About/></Article>
 	<Article id="skills" heading="できること"><Skills/></Article>
 	<Article id="likes" heading="趣味"><Likes/></Article>
-	<footer>
-		(C)2023 Ebise Lutica all rights reserved.
-	</footer>
 </Layout>
 
 <style lang="scss">
@@ -70,22 +67,6 @@ import Navbar from '../components/Navbar.astro';
 			display: flex;
 			gap: 8px;
 			justify-content: center;
-		}
-
-		.button {
-			padding: 4px 16px;
-			line-height: 1.5;
-			font-weight: bold;
-			color: var(--foreground);
-			border: 2px solid var(--foreground);
-			cursor: pointer;
-			text-decoration: none;
-			border-radius: 12px;
-
-			&.primary {
-				border-color: var(--primary);
-				background: 2px var(--primary);
-			}
 		}
 	}
 

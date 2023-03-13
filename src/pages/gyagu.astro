@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Article from '../components/Article.astro';
+import Navbar from '../components/Navbar.astro';
+import { gyagus } from '../scripts/gyagu';
+import { urusaiLinks } from '../scripts/urusai-links';
+import yon from '../assets/4.png';
+---
+
+<Layout title="るちかのうるさいと" description="だじゃれだ～戯れとこｗ">
+	<Article id="gyagu">
+		<h1>ギャグ</h1>
+		<p>このサイト、うるさいとｗｗｗ</p>
+		<p>現在のギャグ数：{gyagus.length}個</p>
+		<ul>
+			{gyagus.map(g => <li>{typeof g === 'string' ? g : <details><summary>{g[0]}</summary>{g[1]}</details>}</li>)}
+		</ul>
+		<h2 id="urusaiLinks">友達のサイトも、うるさいとｗｗｗ</h2>
+		<ul>
+			{urusaiLinks.map(u => <li><a href={u.href} rel="noopener noreferrer" target="_blank">{u.name}</a></li>)}
+		</ul>
+		<p style="margin-bottom: 2000px"><strong>この下に内容は無いようだ…</strong></p>
+		<p><img src="https://mk.shrimpia.network/twemoji/1f990.svg" style="height: 1em"/>「えー、びみょう。」</p>
+		<p><img src="https://mk.shrimpia.network/twemoji/1f988.svg" style="height: 1em"/>「さめたわ…」</p>
+		<p><img src="https://mk.shrimpia.network/twemoji/1f525.svg" style="height: 1em"/>「ﾋｯ」</p>
+		<p><img src={yon} style="height: 1em"/>「4!」</p>
+	</Article>
+</Layout>
+
+<style lang="scss">
+.root {
+	display: flex;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background-image: url('/bg-darker.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+
+	.card {
+		position: relative;
+		width: 100%;
+		max-width: 720px;
+		padding: 16px;
+		margin: 16px;
+		background-color: var(--primaryDark);
+		text-align: center;
+		border-radius: 2px;
+
+		.inner {
+			padding: 16px;
+			border: 2px solid var(--warn);
+		}
+
+		.description {
+			opacity: 0.8;
+		}
+
+		.links {
+			display: flex;
+			gap: 8px;
+			justify-content: center;
+		}
+
+		.button {
+			padding: 4px 16px;
+			line-height: 1.5;
+			font-weight: bold;
+			color: var(--foreground);
+			border: 2px solid var(--foreground);
+			cursor: pointer;
+			text-decoration: none;
+			border-radius: 12px;
+
+			&.primary {
+				border-color: var(--primary);
+				background: 2px var(--primary);
+			}
+		}
+	}
+
+	.avatar-wrapper {
+		$size: 96px;
+		position: absolute;
+		left: calc(50% - ($size / 2));
+		top: -64px;
+		background-color: var(--primaryDark);
+		color: var(--background);
+		position: absolute;
+		border-radius: 999px;
+		padding: 8px;
+		width: $size;
+		height: $size;
+		border: 2px solid var(--warn);
+
+		img {
+			width: 100%;
+			border-radius: 999px;
+		}
+	}
+
+	.image-copyright {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		margin: 16px;
+		opacity: 0.4;
+	}
+}
+</style>

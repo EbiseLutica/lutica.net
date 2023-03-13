@@ -1,6 +1,6 @@
 ---
 export interface Props {
-	title: string;
+	title?: string;
 }
 
 const { title } = Astro.props;
@@ -11,11 +11,11 @@ const { title } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
-		<link src="stylesheet" href="https://koruri.chillout.chat/koruri.css">
+		<link href="https://koruri.chillout.chat/koruri.css" rel="stylesheet">
 		<link href="https://unpkg.com/sanitize.css" rel="stylesheet"/>
-		<title>{title}</title>
+		<title>{title ? `${title} | るちかどっとねっと` : 'るちかどっとねっと'}</title>
 	</head>
 	<body>
 		<slot />
@@ -28,6 +28,7 @@ html {
 	--background: #211520;
 	--primary: #B93E43;
 	--primaryDark: #651622;
+	--link: #b46fde;
 	--dimmed: #8995A8;
 	--warn: #ecbd15;
 	--success: #6f8e4d;
@@ -40,6 +41,10 @@ html {
 	line-height: 2;
 }
 
+::selection {
+	background-color: var(--primary);
+}
+
 .hstack {
 	display: flex;
 	gap: 8px;
@@ -50,11 +55,12 @@ h1 {
 }
 
 h2 {
-	margin-top: 48px;
+	margin-top: 32px;
 	margin-bottom: 0px;
+	border-bottom: 1px solid var(--dimmed);
 }
 
  a {
-	color: var(--primary);
+	color: var(--link);
  }
 </style>

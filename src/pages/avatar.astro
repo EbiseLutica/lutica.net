@@ -1,0 +1,82 @@
+---
+import lutica from '../assets/lutica.png';
+import Navbar from '../components/Navbar.astro';
+import Layout from '../layouts/Layout.astro';
+import Article from '../components/Article.astro';
+import Guideline from '../components/domains/avatar/guideline.md';
+
+---
+
+<Layout title="アバター">
+    <Navbar />
+    <div class="about">
+        <div class="inner">
+            <img src={lutica} alt="かわいいるちかちゃん"/>
+            <section>
+                <h2>海老瀬 瑠愛 (えびせ るちか)</h2>
+                <p>仮想世界に棲む、元エビの人間。独裁国家「シュリンピア帝国」を治めている。</p>
+                <p>頑張れば割と見た目を変えられる能力を持つ。猫耳はオプション。</p>
+                <dl>
+                    <dt>年齢</dt>
+                    <dd>25歳</dd>
+                    <dt>身長</dt>
+                    <dd>およそ150cmくらい</dd>
+                    <dt>イメージカラー</dt>
+                    <dd style="color: #B93E43">#B93E43</dd>
+                </dl>
+            </section>
+        </div>
+    </div>
+    <Article id="guideline" heading="#LuticaArt 募集中！">
+        <p>私のキャラデザを用いたアートを募集しています。制作時は、本ページのガイドラインに従っていただければ幸いです。</p>
+        <a href="/gallery">ギャラリーを見る</a>
+        <Guideline />
+    </Article>
+</Layout>
+
+<style lang="scss">
+.about {
+    margin-top: 96px;
+
+    .inner {
+        display: flex;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 16px;
+		max-width: 1280px;
+
+        > img {
+            width: auto;
+            height: 500px;
+            object-fit: contain;
+        }
+
+        dl {
+            display: flex;
+            flex-wrap: wrap;
+            dt {
+                width: 40%;
+                font-weight: bold;
+            }
+            dd {
+                margin: 0;
+                width: 60%;
+            }
+        }
+
+        > * {
+            flex: 1;
+        }
+
+        @media screen and (max-width: 960px) {
+            flex-direction: column;
+
+            > img {
+                
+                object-fit: contain;
+                flex: none;
+            }
+        }
+    }
+}
+</style>

@@ -1,0 +1,44 @@
+---
+import icon from '../assets/icon.png';
+---
+
+<div class="root">
+    <div class="inner">
+        <img src={icon} alt="lutica" />
+        <h1><a href="/">Ebise Lutica</a></h1>
+    </div>
+</div>
+
+
+<style lang="scss">
+.root {
+    position: sticky;
+    top: 0;
+    background: var(--primaryDark);
+    padding: 8px 16px;
+    box-shadow: 0 2px 8px 4px rgba(0, 0, 0, 0.3);
+
+    .inner {
+        display: flex;
+        max-width: 1024px;
+        margin: 0 auto;
+        align-items: center;
+        gap: 16px;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 1.2rem;
+
+        a {
+            color: currentColor;
+            text-decoration: none;
+        }
+    }
+
+    img {
+        width: 48px;
+        border-radius: 12px;
+    }
+}
+</style>

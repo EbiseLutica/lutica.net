@@ -1,0 +1,122 @@
+---
+import Article from '../components/Article.astro';
+import Layout from '../layouts/Layout.astro';
+
+import { arts } from '../scripts/arts';
+
+import 'photoswipe/style.css';
+import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css';
+---
+
+<Layout title="ギャラリー">
+    <Article id="gallery" heading="ギャラリー">
+        <p>
+            ファンアート募集中です。
+            Misskeyでハッシュタグ #LuticaArt<!-- Aが… --> をつけて投稿すると拾われます。
+        </p>
+        <p>作成時は、必ず<a href="/avatar#キャラクター使用ガイドライン">キャラクター使用ガイドライン</a>に準拠してください。</p>
+
+        <div id="gallery">
+          {
+            arts.map(art => (
+              <a href={`/fa/${art.path}`} class="item" data-pswp-width={art.size[0]} data-pswp-height={art.size[1]}>
+                <img src={`/fa/${art.path}`} alt={`描いてくれた${art.kind ?? '人'}：${art.name}様`} />
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="io-button">
+          <a class="button misskey" href="https://misskey.io/tags/luticaart" target="_blank" rel="noopener noreferrer">
+            Misskey.io でもっと探す
+          </a>
+        </div>
+    </Article>
+</Layout>
+
+<script>
+import PhotoSwipe from 'photoswipe';
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin';
+
+const lightbox = new PhotoSwipeLightbox({
+  gallery: '#gallery',
+  children: '.item',
+  pswpModule: PhotoSwipe,
+});
+
+const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+  type: 'auto',
+});
+
+lightbox.init();
+
+document.querySelectorAll('.item').forEach(e => {
+  (e as HTMLElement).style.transform = `rotate(${Math.floor(Math.random() * 8 - 4)}deg)`;
+});
+</script>
+
+<style lang="scss">
+.root {
+	display: flex;
+	position: relative;
+    flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+.yon {
+    height: 1em;
+}
+
+.io-button {
+  margin-top: 96px;
+  text-align: center;
+
+  .button.misskey {
+    background-color: #86b300;
+    padding: 16px 48px;
+    border: none;
+  }
+}
+
+#gallery {
+  column-count: 5;
+  column-gap: 32px;
+  column-fill: balance;
+  position: relative;
+  .item {
+    display: block;
+    max-width: 100%;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 32px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 6px solid white;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    transform-origin: center center;
+
+    > img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 1080px) {
+    column-count: 4;
+  }
+
+  @media screen and (max-width: 750px) {
+    column-count: 3;
+  }
+}
+</style>

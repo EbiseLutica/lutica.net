@@ -1,0 +1,19 @@
+---
+import Content from '../../components/Content.astro';
+import BlogTitle from '../../components/domains/blog/BlogTitle.astro';
+import Layout from '../../layouts/Layout.astro';
+
+const isDev = import.meta.env.DEV;
+
+const posts = (await Astro.glob('./*.md')).filter(p => !p.frontmatter.draft || isDev);
+
+posts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+
+---
+
+<Layout title="ブログ">
+    <Content>
+        <h1>るちかさんのブログ</h1>
+        {posts.map(p => <BlogTitle path={p.url} frontmatter={p.frontmatter} />)}
+    </Content>
+</Layout>

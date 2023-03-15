@@ -1,7 +1,0 @@
-{
-  "watch": [
-    "src"
-  ],
-  "ext": "ts,scss",
-  "exec": "run-s build"
-}

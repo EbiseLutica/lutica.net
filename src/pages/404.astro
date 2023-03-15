@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import yon from '../assets/4.png';
+---
+
+<Layout title="Not Found">
+	<main class="root">
+        <h1><img class="yon" src={yon} alt="4" title="4"/>0<img class="yon" src={yon} alt="4" title="4"/></h1>
+        <p>URLが間違っているか、既に無いページです。</p>
+        <a href="/">トップに戻る</a>
+	</main>
+</Layout>
+
+<style lang="scss">
+.root {
+	display: flex;
+	position: relative;
+    flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+.yon {
+    height: 1em;
+}
+</style>

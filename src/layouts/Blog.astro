@@ -1,0 +1,27 @@
+---
+import Content from '../components/Content.astro';
+import Layout from '../layouts/Layout.astro';
+
+const { frontmatter } = Astro.props;
+
+---
+
+<Layout title={frontmatter.title}>
+    <Content>
+        <div class="blog-content">
+            <h1>{frontmatter.title}</h1>
+            <aside style="color: var(--dimmed)">
+                投稿日：<time datetime={frontmatter.date}>{frontmatter.date}</time></aside>
+            <hr>
+            <slot />
+        </div>
+    </Content>
+</Layout>
+
+<style lang="scss" is:global>
+    .blog-content {
+        img {
+            max-width: 100%;
+        }
+    }
+</style>

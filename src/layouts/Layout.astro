@@ -1,0 +1,154 @@
+---
+import Navbar from '../components/Navbar.astro';
+
+export interface Props {
+	title?: string;
+	description?: string;
+	root?: boolean;
+}
+
+const {root} = Astro.props;
+
+const BASE_TITLE = 'るちかどっとねっと。';
+
+const title = Astro.props.title ? `${Astro.props.title} | ${BASE_TITLE}` : BASE_TITLE;
+const description = Astro.props.description ?? '海老瀬るちか。いろいろな創作とゲームが好きです。';
+const themeColor = '#651622';
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+		<link href="https://koruri.chillout.chat/koruri.css" rel="stylesheet">
+		<link href="https://unpkg.com/sanitize.css" rel="stylesheet"/>
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="msapplication-TileColor" content={themeColor} />
+		<meta name="theme-color" content={themeColor} />
+		<meta property="og:type" content={title ? 'article' : 'website'} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:site_name" content={BASE_TITLE} />
+		<meta property="og:image" content="/favicon.png" />
+	</head>
+	<body>
+		{!root && <Navbar />}
+		<main class={!root ? 'non-root' : ''}>
+			<slot />
+		</main>
+		<footer>
+			<span>(C)2023 Ebise Lutica all rights reserved.</span>
+		</footer>
+	</body>
+</html>
+
+<style lang="scss">
+	main.non-root {
+		margin-top: 32px;
+	}
+
+	main {
+		min-height: calc(100vh - 384px);
+		padding-bottom: 96px;
+	}
+
+	footer {
+		text-align: center;
+		padding: 128px 0;
+		background-image: url('/bg-darker.jpg');
+		background-size: cover;
+		background-attachment: fixed;
+		font-weight: bold;
+		box-shadow: 0 0 64px 48px rgba(0, 0, 0, 0.6) inset;
+		> span {
+			opacity: 0.6;
+		}
+	}
+</style>
+
+<style lang="scss" is:global>
+html {
+	/* NOTE: http://colormind.io/bootstrap/ で作った */
+	--foreground: #F4F7F3;
+	--background: #211520;
+	--primary: #B93E43;
+	--primaryDark: #651622;
+	--link: #b46fde;
+	--dimmed: #8995A8;
+	--warn: #ecbd15;
+	--success: #6f8e4d;
+	--danger: #f44336;
+	
+	background-color: var(--background);
+	color: var(--foreground);
+	font-family: "Koruri", sans-serif;
+	font-size: 16px;
+	line-height: 2;
+}
+
+::selection {
+	background-color: var(--primary);
+}
+
+.hstack {
+	display: flex;
+	gap: 8px;
+}
+
+h1 {
+	margin: 0;
+}
+
+h2 {
+	margin-top: 64px;
+	margin-bottom: 0px;
+	border-bottom: 1px solid var(--dimmed);
+}
+
+a {
+color: var(--link);
+}
+
+blockquote {
+	color: var(--dimmed);
+	margin-left: 0;
+	border-left: 2px solid var(--dimmed);
+	padding-left: 16px;
+}
+
+.button {
+	padding: 4px 16px;
+	line-height: 1.5;
+	font-weight: bold;
+	color: var(--foreground);
+	border: 2px solid var(--foreground);
+	cursor: pointer;
+	text-decoration: none;
+	border-radius: 12px;
+
+	&.disabled, &:disabled {
+		opacity: 0.5;
+	}
+
+	&.primary {
+		border-color: var(--primary);
+		background: 2px var(--primary);
+	}
+
+	&:hover {
+		filter: brightness(1.1);
+	}
+
+	&:active {
+		filter: brightness(0.7);
+	}
+}
+
+.fluid {
+	width: 100%;
+}
+</style>

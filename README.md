@@ -1,7 +1,7 @@
-# Lutica.net
+# るちかどっとねっとリポジトリ
 
-個人サイト。
+lutica.net の中身だよ
 
-## LICENSE
+## ライセンス
 
-(C) 2022 Ebise Lutica All rights reserved.
+(C)2023 Ebise Lutica All rights reserved.

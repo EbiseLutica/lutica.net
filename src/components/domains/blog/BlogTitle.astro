@@ -1,0 +1,23 @@
+---
+
+export interface Props {
+    path: string;
+	frontmatter: Record<string, any>;
+}
+
+const { path, frontmatter } = Astro.props;
+
+---
+
+<article>
+    <h2 class="title"><a href={path}>{frontmatter.title}</a></h2>
+    <aside style="color: var(--dimmed)">
+        投稿日：<time datetime={frontmatter.date}>{frontmatter.date}</time></aside>
+    <p>{frontmatter.description}</p>
+</article>
+
+<style lang="scss">
+    h2.title {
+        border-bottom: none;
+    }
+</style>

@@ -2,14 +2,22 @@ lockfileVersion: 5.4
 
 specifiers:
   '@astrojs/mdx': ^0.18.0
+  '@types/sharp': ^0.31.1
   astro: ^2.0.18
+  photoswipe: ^5.3.6
+  photoswipe-dynamic-caption-plugin: ^1.2.7
+  rollup: 3.19.1
   sass: ^1.59.2
 
 dependencies:
-  '@astrojs/mdx': 0.18.0_astro@2.1.2
+  '@astrojs/mdx': 0.18.0_astro@2.1.2+rollup@3.19.1
   astro: 2.1.2_sass@1.59.2
+  photoswipe: 5.3.6
+  photoswipe-dynamic-caption-plugin: 1.2.7
+  rollup: 3.19.1
 
 devDependencies:
+  '@types/sharp': 0.31.1
   sass: 1.59.2
 
 packages:
@@ -72,14 +80,14 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx/0.18.0_astro@2.1.2:
+  /@astrojs/mdx/0.18.0_astro@2.1.2+rollup@3.19.1:
     resolution: {integrity: sha512-mgICosefMpl67O7ER6Yi6ylT9Hk8ZAO6GhTlx4pYXIMOWFMQlP0NXQ9teZwPhOWzBcHWnsHEF+AzVZWbiC2EBg==}
     engines: {node: '>=16.12.0'}
     dependencies:
       '@astrojs/markdown-remark': 2.1.0_astro@2.1.2
       '@astrojs/prism': 2.1.0
       '@mdx-js/mdx': 2.3.0
-      '@mdx-js/rollup': 2.3.0
+      '@mdx-js/rollup': 2.3.0_rollup@3.19.1
       acorn: 8.8.2
       es-module-lexer: 1.2.0
       estree-util-visit: 1.2.1
@@ -639,13 +647,14 @@ packages:
       - supports-color
     dev: false
 
-  /@mdx-js/rollup/2.3.0:
+  /@mdx-js/rollup/2.3.0_rollup@3.19.1:
     resolution: {integrity: sha512-wLvRfJS/M4UmdqTd+WoaySEE7q4BIejYf1xAHXYvtT1du/1Tl/z2450Gg2+Hu7fh05KwRRiehiTP9Yc/Dtn0fA==}
     peerDependencies:
       rollup: '>=2'
     dependencies:
       '@mdx-js/mdx': 2.3.0
-      '@rollup/pluginutils': 5.0.2
+      '@rollup/pluginutils': 5.0.2_rollup@3.19.1
+      rollup: 3.19.1
       source-map: 0.7.4
       vfile: 5.3.7
     transitivePeerDependencies:
@@ -685,7 +694,7 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@rollup/pluginutils/5.0.2:
+  /@rollup/pluginutils/5.0.2_rollup@3.19.1:
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -697,6 +706,7 @@ packages:
       '@types/estree': 1.0.0
       estree-walker: 2.0.2
       picomatch: 2.3.1
+      rollup: 3.19.1
     dev: false
 
   /@types/acorn/4.0.6:
@@ -780,6 +790,10 @@ packages:
       '@types/unist': 2.0.6
     dev: false
 
+  /@types/node/18.15.3:
+    resolution: {integrity: sha512-p6ua9zBxz5otCmbpb5D3U4B5Nanw6Pk3PPyX05xnxbB/fRv71N7CPmORg7uAD5P70T0xmx1pzAx/FUfa5X+3cw==}
+    dev: true
+
   /@types/parse5/6.0.3:
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
     dev: false
@@ -787,6 +801,12 @@ packages:
   /@types/resolve/1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
     dev: false
+
+  /@types/sharp/0.31.1:
+    resolution: {integrity: sha512-5nWwamN9ZFHXaYEincMSuza8nNfOof8nmO+mcI+Agx1uMUk4/pQnNIcix+9rLPXzKrm1pS34+6WRDbDV0Jn7ag==}
+    dependencies:
+      '@types/node': 18.15.3
+    dev: true
 
   /@types/unist/2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
@@ -2597,6 +2617,15 @@ packages:
       '@types/estree': 1.0.0
       estree-walker: 3.0.3
       is-reference: 3.0.1
+    dev: false
+
+  /photoswipe-dynamic-caption-plugin/1.2.7:
+    resolution: {integrity: sha512-5XXdXLf2381nwe7KqQvcyStiUBi9TitYXppUQTrzPwYAi4lZsmWNnNKMclM7I4QGlX6fXo42v3bgb6rlK9pY1Q==}
+    dev: false
+
+  /photoswipe/5.3.6:
+    resolution: {integrity: sha512-v7e8iMfaPUujTACYsK5HBCCtFoW9n2dMZmjIlbvFS2oSpTQmPrfc3PrWnGx8OGY3jNOKho8JC8L277+m+9ag9Q==}
+    engines: {node: '>= 0.12.0'}
     dev: false
 
   /picocolors/1.0.0:

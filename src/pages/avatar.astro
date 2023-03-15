@@ -1,6 +1,5 @@
 ---
 import lutica from '../assets/lutica.png';
-import Navbar from '../components/Navbar.astro';
 import Layout from '../layouts/Layout.astro';
 import Article from '../components/Article.astro';
 import Guideline from '../components/domains/avatar/guideline.md';
@@ -43,13 +42,18 @@ import Guideline from '../components/domains/avatar/guideline.md';
         display: flex;
         width: 100%;
         margin: 0 auto;
-        padding: 0 16px;
 		max-width: 1280px;
+        gap: 192px;
 
         > img {
             width: auto;
             height: 500px;
             object-fit: contain;
+            object-position: left;
+        }
+
+        > section {
+            flex: 1;
         }
 
         dl {
@@ -65,12 +69,9 @@ import Guideline from '../components/domains/avatar/guideline.md';
             }
         }
 
-        > * {
-            flex: 1;
-        }
-
         @media screen and (max-width: 960px) {
-            flex-direction: column;
+            display: block;
+            padding: 16px;
 
             > img {
                 

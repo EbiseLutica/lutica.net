@@ -37,7 +37,9 @@ const themeColor = '#651622';
 	</head>
 	<body>
 		{!root && <Navbar />}
-		<slot />
+		<main class={!root ? 'non-root' : ''}>
+			<slot />
+		</main>
 		<footer>
 			(C)2023 Ebise Lutica all rights reserved.
 		</footer>
@@ -45,6 +47,9 @@ const themeColor = '#651622';
 </html>
 
 <style lang="scss">
+	main.non-root {
+		margin-top: 32px;
+	}
 	footer {
 		text-align: center;
 		padding: 128px 0;
@@ -90,13 +95,20 @@ h1 {
 }
 
 h2 {
-	margin-top: 32px;
+	margin-top: 64px;
 	margin-bottom: 0px;
 	border-bottom: 1px solid var(--dimmed);
 }
 
 a {
 color: var(--link);
+}
+
+blockquote {
+	color: var(--dimmed);
+	margin-left: 0;
+	border-left: 2px solid var(--dimmed);
+	padding-left: 16px;
 }
 
 .button {
@@ -109,9 +121,25 @@ color: var(--link);
 	text-decoration: none;
 	border-radius: 12px;
 
+	&.disabled, &:disabled {
+		opacity: 0.5;
+	}
+
 	&.primary {
 		border-color: var(--primary);
 		background: 2px var(--primary);
 	}
+
+	&:hover {
+		filter: brightness(1.1);
+	}
+
+	&:active {
+		filter: brightness(0.7);
+	}
+}
+
+.fluid {
+	width: 100%;
 }
 </style>

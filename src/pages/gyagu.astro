@@ -1,19 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Article from '../components/Article.astro';
-import Navbar from '../components/Navbar.astro';
 import { gyagus } from '../scripts/gyagu';
 import { urusaiLinks } from '../scripts/urusai-links';
 import yon from '../assets/4.png';
+
+const $gyagus = [...gyagus].reverse();
 ---
 
 <Layout title="るちかのうるさいと" description="だじゃれだ～戯れとこｗ">
 	<Article id="gyagu">
 		<h1>ギャグ</h1>
 		<p>このサイト、うるさいとｗｗｗ</p>
-		<p>現在のギャグ数：{gyagus.length}個</p>
+		<p>現在のギャグ数：{$gyagus.length}個</p>
 		<ul>
-			{gyagus.map(g => <li>{typeof g === 'string' ? g : <details><summary>{g[0]}</summary>{g[1]}</details>}</li>)}
+			{$gyagus.map(g => <li>{typeof g === 'string' ? g : <details><summary>{g[0]}</summary>{g[1]}</details>}</li>)}
 		</ul>
 		<h2 id="urusaiLinks">友達のサイトも、うるさいとｗｗｗ</h2>
 		<ul>

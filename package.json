@@ -11,9 +11,13 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^0.18.0",
-    "astro": "^2.0.18"
+    "astro": "^2.0.18",
+    "photoswipe": "^5.3.6",
+    "photoswipe-dynamic-caption-plugin": "^1.2.7",
+    "rollup": "3.19.1"
   },
   "devDependencies": {
+    "@types/sharp": "^0.31.1",
     "sass": "^1.59.2"
   }
 }

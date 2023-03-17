@@ -11,8 +11,12 @@ import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
 <Layout title="ギャラリー">
     <Article id="gallery" heading="ギャラリー">
         <p>
-            ファンアート募集中です。
-            Misskeyでハッシュタグ #LuticaArt<!-- Aが… --> をつけて投稿すると拾われます。
+          ファンアート募集中です。<br/>
+          以下の手順でアップロードしていただくと、掲載されるかも…！
+          <ul>
+            <li>Misskeyで @lutica@mk.shrimpia.network をフォローする</li>
+            <li>ハッシュタグ #LuticaArt<!-- Aが… --> をつけるか、メンションする</li>
+          </ul>
         </p>
         <p>作成時は、必ず<a href="/avatar#キャラクター使用ガイドライン">キャラクター使用ガイドライン</a>に準拠してください。</p>
 
@@ -88,7 +92,7 @@ h1 {
 }
 
 #gallery {
-  column-count: 5;
+  column-count: 4;
   column-gap: 32px;
   column-fill: balance;
   position: relative;
@@ -112,11 +116,11 @@ h1 {
   }
 
   @media screen and (max-width: 1080px) {
-    column-count: 4;
+    column-count: 3;
   }
 
   @media screen and (max-width: 750px) {
-    column-count: 3;
+    column-count: 2;
   }
 }
 </style>

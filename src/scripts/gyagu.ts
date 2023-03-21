@@ -44,4 +44,5 @@ export const gyagus: Array<string | [string, string]> = [
 	'commit amend しなきゃ…あーめんど。',
 	'中華はもうええっちゅうかw',
 	'真アジのマージン',
+	'溶岩湖もよー頑固でなぁw',
 ];

@@ -48,5 +48,6 @@ export const gyagus: Array<string | [string, string]> = [
 	'KFCの経営不振',
 	'カセットはよ貸せっと',
 	'海老？えー微妙。',
-	'瞳「Hit me.」'
+	'瞳「Hit me.」',
+	'ウランは売らん。',
 ];

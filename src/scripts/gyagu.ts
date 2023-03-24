@@ -45,4 +45,8 @@ export const gyagus: Array<string | [string, string]> = [
 	'中華はもうええっちゅうかw',
 	'真アジのマージン',
 	'溶岩湖もよー頑固でなぁw',
+	'KFCの経営不振',
+	'カセットはよ貸せっと',
+	'海老？えー微妙。',
+	'瞳「Hit me.」'
 ];

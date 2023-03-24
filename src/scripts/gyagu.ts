@@ -50,4 +50,5 @@ export const gyagus: Array<string | [string, string]> = [
 	'海老？えー微妙。',
 	'瞳「Hit me.」',
 	'ウランは売らん。',
+	'このクラスで、暮らす。',
 ];

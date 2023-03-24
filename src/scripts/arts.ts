@@ -6,6 +6,10 @@ export interface Art {
 }
 
 export const arts: Art[] = [{
+	path: 'nekomiya-1.jpg',
+	name: '天照',
+	size: [750, 873],
+}, {
 	path: 'amaterasu-1.webp',
 	name: '天照',
 	size: [2048, 1536],

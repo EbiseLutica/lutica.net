@@ -51,5 +51,5 @@ export const gyagus: Array<string | [string, string]> = [
 	'瞳「Hit me.」',
 	'ウランは売らん。',
 	'このクラスで、暮らす。',
-	'亜鉛には会えん…。'
+	'亜鉛には会えん…。',
 ];

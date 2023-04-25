@@ -7,6 +7,10 @@ export interface Art {
 
 export const arts: Art[] = [{
 	path: 'kirota-1.png',
+	name: 'ティタ',
+	size: [1200, 1600],
+}, {
+	path: 'kirota-1.png',
 	name: '白月きろた',
 	size: [980, 1460],
 }, {

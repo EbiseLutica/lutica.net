@@ -6,6 +6,15 @@ export interface Art {
 }
 
 export const arts: Art[] = [{
+	path: 'tsumekiri-1.jpg',
+	name: 'ゲーミングつめきり',
+	size: [1536, 2048],
+}, {
+	path: 'minaseliu-3.png',
+	name: '水瀬 莉雨',
+	kind: 'ネギ',
+	size: [1754, 1240],
+}, {
 	path: 'thita-1.png',
 	name: 'ティタ',
 	size: [1200, 1600],

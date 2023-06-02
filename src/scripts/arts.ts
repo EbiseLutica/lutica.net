@@ -15,7 +15,7 @@ export const arts: Art[] = [{
 	size: [1000, 1000],
 }, {
 	path: 'tsumekiri-1.jpg',
-	name: 'ゲーミングつめきり',
+	name: 'げーみんぐつめきり',
 	size: [1536, 2048],
 }, {
 	path: 'minaseliu-3.png',

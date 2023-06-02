@@ -57,4 +57,6 @@ export const gyagus: Array<string | [string, string]> = [
 	'そうめん、くそうめーんw',
 	'meleeを命令…w',
 	'マヨネーズをかけるか迷うねー',
+	'神殿で、死んでんねん…',
+	'ほぉ、うるさいとがうるさい、と。',
 ];

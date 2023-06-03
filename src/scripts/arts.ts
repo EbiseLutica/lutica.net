@@ -74,14 +74,6 @@ export const arts: Art[] = [{
 	name: 'おばけやぎ',
 	size: [1534, 1748],
 }, {
-	path: 'or-1.png',
-	name: 'Or',
-	size: [1032, 1205],
-}, {
-	path: 'or-2.png',
-	name: 'Or',
-	size: [1032, 1550],
-}, {
 	path: 'rerorero-1.jpg',
 	name: 'さなてぃー',
 	size: [1536, 2048],

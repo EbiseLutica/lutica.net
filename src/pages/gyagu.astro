@@ -1,21 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Article from '../components/Article.astro';
-import { gyagus } from '../scripts/gyagu';
 import { urusaiLinks } from '../scripts/urusai-links';
 import yon from '../assets/4.png';
-
-const $gyagus = [...gyagus].reverse();
+import { GagView } from '../components/domains/gyagu/GagView';
 ---
 
 <Layout title="るちかのうるさいと" description="だじゃれだ～戯れとこｗ">
 	<Article id="gyagu">
 		<h1>ギャグ</h1>
 		<p>このサイト、うるさいとｗｗｗ</p>
-		<p>現在のギャグ数：{$gyagus.length}個</p>
-		<ul>
-			{$gyagus.map(g => <li>{typeof g === 'string' ? g : <details><summary>{g[0]}</summary>{g[1]}</details>}</li>)}
-		</ul>
+		<GagView client:load />
 		<h2 id="urusaiLinks">友達のサイトも、うるさいとｗｗｗ</h2>
 		<ul>
 			{urusaiLinks.map(u => <li><a href={u.href} rel="noopener noreferrer" target="_blank">{u.name}</a></li>)}

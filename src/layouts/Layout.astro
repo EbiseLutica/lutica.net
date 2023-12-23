@@ -1,5 +1,7 @@
 ---
 import Navbar from '../components/Navbar.astro';
+import 'photoswipe/style.css';
+import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css';
 
 export interface Props {
 	title?: string;
@@ -35,7 +37,7 @@ const themeColor = '#651622';
 		<meta property="og:site_name" content={BASE_TITLE} />
 		<meta property="og:image" content="/favicon.png" />
 	</head>
-	<body>
+	<body id="root">
 		{!root && <Navbar />}
 		<main class={!root ? 'non-root' : ''}>
 			<slot />
@@ -45,6 +47,24 @@ const themeColor = '#651622';
 		</footer>
 	</body>
 </html>
+
+<script>
+	import PhotoSwipe from 'photoswipe';
+	import PhotoSwipeLightbox from 'photoswipe/lightbox';
+	import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin';
+
+	const lightbox = new PhotoSwipeLightbox({
+	gallery: '#root',
+	children: '.item',
+	pswpModule: PhotoSwipe,
+	});
+
+	const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+	type: 'auto',
+	});
+
+	lightbox.init();
+</script>
 
 <style lang="scss">
 	main.non-root {
@@ -99,14 +119,31 @@ html {
 	gap: 8px;
 }
 
+p {
+	margin-bottom: 16px;
+
+	+ p {	
+		margin-top: 0;
+	}
+}
+
 h1 {
 	margin: 0;
 }
 
 h2 {
 	margin-top: 64px;
-	margin-bottom: 0px;
+	margin-bottom: 0;
 	border-bottom: 1px solid var(--dimmed);
+}
+
+h3 {
+	margin-top: 48px;
+	margin-bottom: 0;
+}
+
+img {
+	width: 100%;
 }
 
 a {
@@ -150,5 +187,33 @@ blockquote {
 
 .fluid {
 	width: 100%;
+}
+
+iframe {
+	width: 100%;
+}
+
+figure {
+	margin: 0;
+	width: 100%;
+	max-width: fit-content;
+	border: 2px dashed var(--primaryDark);
+	padding: 16px 24px;
+
+	img {
+		width: 100%;
+	}
+
+	.item img {
+		cursor: zoom-in;
+	}
+
+	figcaption {
+		color: var(--dimmed);
+		&::before {
+			content: '▲ ';
+			font-size: 0.7em;
+		}
+	}
 }
 </style>

@@ -39,22 +39,6 @@ import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
 </Layout>
 
 <script>
-import PhotoSwipe from 'photoswipe';
-import PhotoSwipeLightbox from 'photoswipe/lightbox';
-import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin';
-
-const lightbox = new PhotoSwipeLightbox({
-  gallery: '#gallery',
-  children: '.item',
-  pswpModule: PhotoSwipe,
-});
-
-const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
-  type: 'auto',
-});
-
-lightbox.init();
-
 document.querySelectorAll('.item').forEach(e => {
   (e as HTMLElement).style.transform = `rotate(${Math.floor(Math.random() * 8 - 4)}deg)`;
 });
@@ -64,7 +48,7 @@ document.querySelectorAll('.item').forEach(e => {
 .root {
 	display: flex;
 	position: relative;
-    flex-direction: column;
+  flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	min-height: 100vh;

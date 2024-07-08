@@ -6,6 +6,7 @@ import About from '../components/domains/index/about.mdx';
 import Skills from '../components/domains/index/skills.mdx';
 import Likes from '../components/domains/index/likes.mdx';
 import Navbar from '../components/Navbar.astro';
+import { Icon } from 'astro-icon/components';
 ---
 
 <Layout root>
@@ -15,8 +16,21 @@ import Navbar from '../components/Navbar.astro';
 				<h1>Ebise Lutica</h1>
 				<p class="description">いろいろ・エンジニア！</p>
 				<div class="links">
-					<a href="#about" class="button primary">自己紹介</a>
-					<a href="/blog" class="button">ブログ</a>
+					<a href="/blog" class="button social">
+						<Icon name="bi:newspaper" />
+					</a>
+					<a href="https://mk.shrimpia.network/@lutica" style="--brand-bg: #A1CA03" class="button social" target="_blank" rel="noopener noreferrer">
+						<Icon name="simple-icons:misskey" />
+					</a>
+					<a href="https://x.com/lutica_f" class="button social" target="_blank" rel="noopener noreferrer">
+						<Icon name="simple-icons:x" />
+					</a>
+					<a href="https://github.com/ebiselutica" class="button social" target="_blank" rel="noopener noreferrer">
+						<Icon name="simple-icons:github" />
+					</a>
+					<a href="https://soundcloud.com/lutica_sc" style="--brand-bg: #FF5500" class="button social" target="_blank" rel="noopener noreferrer">
+						<Icon name="simple-icons:soundcloud" />
+					</a>
 				</div>
 			</div>
 		</div>
@@ -43,6 +57,7 @@ import Navbar from '../components/Navbar.astro';
 	box-shadow: 0 0 64px 48px rgba(0, 0, 0, 0.6) inset;
 
 	.card {
+		--foreground: #fff;
 		position: relative;
 		width: 100%;
 		max-width: 720px;
@@ -51,6 +66,7 @@ import Navbar from '../components/Navbar.astro';
 		background-color: var(--primaryDark);
 		text-align: center;
 		border-radius: 2px;
+		color: var(--foreground);
 
 		.inner {
 			padding: 16px;
@@ -94,6 +110,28 @@ import Navbar from '../components/Navbar.astro';
 		bottom: 0;
 		margin: 16px;
 		opacity: 0.4;
+	}
+
+	.button.social {
+		--brand-bg: var(--foreground);
+		--brand-fg: #000;
+		width: 52px;
+		height: 52px;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.4rem;
+		border-radius: 999px;
+		background-color: transparent;
+
+		transition: all 0.2s ease;
+
+		&:hover {
+			border-color: var(--brand-bg);
+			background: var(--brand-bg);
+			color: var(--brand-fg);
+		}
 	}
 }
 </style>

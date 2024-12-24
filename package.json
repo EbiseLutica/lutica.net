@@ -10,11 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^3.1.2",
-    "@astrojs/react": "^3.6.0",
+    "@astrojs/mdx": "^4.0.3",
+    "@astrojs/react": "^4.1.2",
     "@iconify-json/bi": "^1.1.23",
     "@iconify-json/simple-icons": "^1.1.108",
-    "astro": "^4.11.5",
+    "astro": "^5.1.1",
     "astro-icon": "^1.1.0",
     "photoswipe": "^5.3.6",
     "photoswipe-dynamic-caption-plugin": "^1.2.7",

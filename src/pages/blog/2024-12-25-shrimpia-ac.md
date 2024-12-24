@@ -3,7 +3,6 @@ layout: ../../layouts/Blog.astro
 title: "2024年のシュリンピア"
 description: ""
 date: "2024/12/25"
-draft: true # 公開時にはずしなさい
 ---
 
 これは、[シュリンピア帝国 Advent Calendar 2024](https://adventar.org/calendars/10093)の25日目の記事です。

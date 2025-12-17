@@ -1,0 +1,15 @@
+.button {
+    appearance: none;
+    border: none;
+    color: currentColor;
+    text-decoration: none;
+    background: var(--menubar-link-bg);
+    padding: 8px 10px;
+    line-height: 1;
+    border-radius: 6px;
+    transition: background 0.1s ease;
+
+    &:hover {
+        background: var(--menubar-link-bg-active);
+    }
+}

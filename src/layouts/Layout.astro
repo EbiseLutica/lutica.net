@@ -17,7 +17,7 @@ const themeColor = '#651622';
 ---
 
 <!DOCTYPE html>
-<html lang="ja" data-theme="dark">
+<html lang="ja">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -55,13 +55,6 @@ const themeColor = '#651622';
 		children: '.item',
 		pswpModule: PhotoSwipe,
 	});
-
-	const theme = window.matchMedia('(prefers-color-scheme: dark)');
-
-	theme.addEventListener('change', () => {
-		document.documentElement.dataset.theme = theme.matches ? 'dark' : 'light';
-	});
-	document.documentElement.dataset.theme = theme.matches ? 'dark' : 'light';
 
 	lightbox.init();
 </script>

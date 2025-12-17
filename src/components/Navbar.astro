@@ -1,5 +1,6 @@
 ---
 import { SITE_TITLE } from "../scripts/const";
+import { ThemeButton } from "./ThemeButton";
 
 const {title} = Astro.props;
 ---
@@ -12,6 +13,7 @@ const {title} = Astro.props;
         <div class="right">
             <a href="/about">About</a>
             <a href="/blog">Blog</a>
+            <ThemeButton className="button" client:load />
         </div>
     </div>
 </div>

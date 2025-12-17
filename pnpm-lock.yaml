@@ -20,6 +20,12 @@ importers:
       '@iconify-json/simple-icons':
         specifier: ^1.1.108
         version: 1.1.108
+      '@iconify-json/tabler':
+        specifier: ^1.2.24
+        version: 1.2.24
+      '@iconify/react':
+        specifier: ^6.0.2
+        version: 6.0.2(react@18.2.0)
       astro:
         specifier: ^5.1.1
         version: 5.1.1(@types/node@18.15.3)(jiti@2.4.2)(rollup@3.19.1)(sass@1.59.2)(typescript@5.7.2)
@@ -485,6 +491,14 @@ packages:
 
   '@iconify-json/simple-icons@1.1.108':
     resolution: {integrity: sha512-GeC0Oy3j385BgjI0TadEzVbzM/cYjvAot22hJLNal3wKLmf/8t6RtH2PgRiNaK+SxELeDYdSAHocXxw4QoKXYA==}
+
+  '@iconify-json/tabler@1.2.24':
+    resolution: {integrity: sha512-W1GIC36ckaQvr0fpQeyqC62HWyF3/r0yjJHtCByZmxA3qTMqLv0wJDdz/BffnmoCMulaBbxgjbTptFfKyn5e/g==}
+
+  '@iconify/react@6.0.2':
+    resolution: {integrity: sha512-SMmC2sactfpJD427WJEDN6PMyznTFMhByK9yLW0gOTtnjzzbsi/Ke/XqsumsavFPwNiXs8jSiYeZTmLCLwO+Fg==}
+    peerDependencies:
+      react: '>=16'
 
   '@iconify/tools@3.0.7':
     resolution: {integrity: sha512-DxfhFLMnooS34dHelpGUnnYrxLZHs0czC1CgrBhAbuL8ddVzBb2VEQm8kh9qGh7A34qeXAB5iSHH3A72rAaFrg==}
@@ -2991,6 +3005,15 @@ snapshots:
   '@iconify-json/simple-icons@1.1.108':
     dependencies:
       '@iconify/types': 2.0.0
+
+  '@iconify-json/tabler@1.2.24':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify/react@6.0.2(react@18.2.0)':
+    dependencies:
+      '@iconify/types': 2.0.0
+      react: 18.2.0
 
   '@iconify/tools@3.0.7':
     dependencies:

@@ -147,13 +147,33 @@ details {
 	vertical-align: middle;
 }
 
-._article-card {
+._card {
     background: var(--content-bg);
     border-radius: 10px;
-    padding: 3rem 2rem;
+	padding: 2rem;
 }
 
+._article-card {
+	@extend ._card;
+    padding: 3rem 2rem;
+
+	@media (max-width: 600px) {
+		padding: 2rem 1rem;
+	}
+}
 
 ._fluid {
 	width: 100%;
+}
+
+._vstack {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+._hstack {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
 }

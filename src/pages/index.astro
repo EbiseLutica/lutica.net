@@ -30,19 +30,29 @@ import { Icon } from 'astro-icon/components';
 		<div class="top-menu">
 			<a href="/about" class="menu-item">
 				<h2 class="title">About</h2>
-				<p>もっとくわしく自己紹介</p>
+				<p>もっとくわしい　自己紹介</p>
 			</a>
 			<a href="/blog" class="menu-item">
 				<h2 class="title">Blog</h2>
-				<p>ちょっと長いはなしをつらつら</p>
+				<p>ちょっと長い　話をつらつら</p>
 			</a>
 			<a href="/works" class="menu-item">
 				<h2 class="title">Works</h2>
-				<p>いろんなモノ、つくってます</p>
+				<p>いろんなモノ　つくってます</p>
 			</a>
+			<div class="menu-item disabled">
+				<h2 class="title">Characters</h2>
+				<p>アバターと　うちの子</p>
+				<aside>準備中...</aside>
+			</div>
+			<div class="menu-item disabled">
+				<h2 class="title">Gallery</h2>
+				<p>描いた＆描いていただいた　イラスト集</p>
+				<aside>準備中...</aside>
+			</div>
 			<a href="/gyagu" class="menu-item">
 				<h2 class="title">Gyagu*</h2>
-				<p>このサイト、うるさいとｗ</p>
+				<p>このサイト　うるさいとｗ</p>
 				<aside>
 					*: gagではなく、gyaguです
 				</aside>
@@ -60,13 +70,13 @@ $page-max-width: 500px;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	padding: 0 16px;
 
 	.card {
 		position: relative;
 		width: 100%;
 		max-width: $page-max-width;
 		padding: 16px;
-		margin: 16px;
 		background-color: var(--content-bg);
 		text-align: center;
 		border-radius: 16px;
@@ -113,18 +123,18 @@ $page-max-width: 500px;
 	.top-menu {
 		display: flex;
 		flex-direction: column;
-		gap: 6px;
-		margin-bottom: 16px;
+		gap: 12px;
 		width: 100%;
 		max-width: $page-max-width;
-		margin: 16px;
+		margin: 40px 16px 16px 16px;
 
 		.menu-item {
 			display: block;
 			padding: 16px;
 			border-radius: 8px;
 			border: none;
-			background-color: var(--menubar-link-bg);
+			background-color: var(--content-bg);
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 			color: var(--foreground);
 			text-decoration: none;
 			transition: background-color 0.1s ease;
@@ -146,7 +156,12 @@ $page-max-width: 500px;
 				line-height: 1.2;
 			}
 
-			&:hover {
+			&.disabled {
+				opacity: 0.5;
+				pointer-events: none;
+			}
+
+			&:not(.disabled):hover {
 				background-color: var(--menubar-link-bg-active);
 			}
 		}

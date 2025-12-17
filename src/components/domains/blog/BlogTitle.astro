@@ -10,26 +10,35 @@ const { path, frontmatter } = Astro.props;
 
 ---
 
-<article class="article">
-    <h2 class="title"><a href={path}>{frontmatter.title}</a></h2>
-    <aside class="date">
-        <Icon name="bi:calendar-fill" /> <time datetime={frontmatter.date}>{frontmatter.date}</time>
-    </aside>
-    <p>{frontmatter.description}</p>
-</article>
+<a href={path} class="root">
+    <article class="article">
+        <h2 class="title">{frontmatter.title}</h2>
+        <aside class="date">
+            <Icon name="bi:calendar-fill" /> <time datetime={frontmatter.date}>{frontmatter.date}</time>
+        </aside>
+        <p>{frontmatter.description}</p>
+    </article>
+</a>
 
 <style lang="scss">
+    .root {
+        color: inherit;
+        text-decoration: none;
+    }
+
     .article {
-        margin-top: 20px;
+        background-color: var(--content-bg);
         padding: 16px;
-        border: 2px dashed var(--dimmed);
         border-radius: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .date {
         color: var(--dimmed);
         font-size: 0.9em;
+        padding-left: 10px;
     }
+
     h2.title {
         margin: 0;
         border-bottom: none;

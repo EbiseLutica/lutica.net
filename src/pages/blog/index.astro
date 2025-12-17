@@ -13,14 +13,30 @@ posts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontma
 
 <Layout title="ブログ">
     <Content>
-        <h1>るちーかの長いノート</h1>
-        <p>
-            普段Misskeyを使いすぎてブログというものを書かなすぎる（アドカレ置き場になっている）んですが、オタクというのは時折長く語りたくなるものなので……そんなものを置く場所です。
-        </p>
-        <p>
-            暇な方、るちーかのファン、あるいはそれら以外全ての方、どうぞご覧ください。
-        </p>
-        {isDev ? <aside style="color: var(--dimmed)">（開発ビルドのため、下書き記事も表示しています）</aside> : null}
-        {posts.map(p => <BlogTitle path={p.url} frontmatter={p.frontmatter} />)}
+        <header>
+            <h1>るちーかの長いノート</h1>
+            <p>
+                普段Misskeyを使いすぎてブログというものを書かなすぎる（アドカレ置き場になっている）んですが、オタクというのは時折長く語りたくなるものなので……そんなものを置く場所です。
+            </p>
+            <p>
+                暇な方、るちーかのファン、あるいはそれら以外全ての方、どうぞご覧ください。
+            </p>
+            {isDev ? <aside style="color: var(--dimmed)">（開発ビルドのため、下書き記事も表示しています）</aside> : null}
+        </header>
+        <div class="article-list">
+            {posts.map(p => <BlogTitle path={p.url} frontmatter={p.frontmatter} />)}
+        </div>
     </Content>
 </Layout>
+
+<style lang="scss">
+    header {
+        margin-bottom: 2rem;
+    }
+
+    .article-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+</style>

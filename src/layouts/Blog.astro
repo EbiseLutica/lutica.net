@@ -10,25 +10,26 @@ const { frontmatter } = Astro.props;
 <Layout title={frontmatter.title}>
     <Content>
         <a href="/blog">← ブログ一覧に戻る</a>
-        <div class="blog-content">
+        <div class="blog">
             <header class="hero">
                 <h1>{frontmatter.title}</h1>
                 <aside style="color: var(--dimmed)">
                     <Icon name="bi:calendar-fill"/> <time datetime={frontmatter.date}>{frontmatter.date}</time>
                 </aside>
             </header>
-            <slot />
+            <article class="_article-card">
+                <slot />
+            </article>
         </div>
     </Content>
 </Layout>
 
-<style lang="scss" is:global>
-    .blog-content {
+<style lang="scss">
+    .blog {
         header.hero {
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             text-align: center;
             padding-bottom: 1rem;
-            border-bottom: 2px dashed var(--dimmed);
         }
 
         img {

@@ -1,0 +1,142 @@
+html {
+	--foreground: #000000;
+	--background: #FFE5E4;
+    --content-bg: #F8EEED;
+	--strong-fg: #000000;
+    --menubar-bg: rgba(219, 219, 219, 0.6);
+    --menubar-link-bg: rgba(180, 180, 180, 0.3);
+    --menubar-link-bg-active: rgba(120, 120, 120, 0.3);
+	--primary: #F24149;
+	--primaryDark: #F24149;
+	--link: #F24149;
+	--dimmed: #8995A8;
+	--warn: #ecbd15;
+	--success: #6f8e4d;
+	--danger: #f44336;
+	
+	&[data-theme="dark"] {
+		/* NOTE: http://colormind.io/bootstrap/ で作った */
+		--foreground: #c9baba;
+		--background: #0f0f1a;
+		--strong-fg: #ffffff;
+        --content-bg: #161625;
+        --menubar-bg: rgba(44, 44, 65, 0.6);
+        --menubar-link-bg: rgba(88, 88, 132, 0.3);
+        --menubar-link-bg-active: rgba(77, 77, 116, 0.3);
+		--primary: #F24149;
+		--primaryDark: #F24149;
+		--link: #F24149;
+		--dimmed: #8995A8;
+		--warn: #ecbd15;
+		--success: #6f8e4d;
+		--danger: #f44336;
+	}
+	
+	background-color: var(--background);
+	color: var(--foreground);
+	font-family: "Koruri", sans-serif;
+	font-size: 16px;
+	line-height: 2;
+}
+
+::selection {
+	background-color: var(--primary);
+	color: white;
+}
+
+p {
+	margin-bottom: 10px;
+
+	+ p {	
+		margin-top: 0;
+	}
+}
+
+h1 {
+	margin: 0;
+	color: var(--strong-fg);
+}
+
+h2 {
+	margin-top: 64px;
+	margin-bottom: 0;
+	border-bottom: 2px solid var(--primary);
+	color: var(--strong-fg);
+	&::before {
+		content: '';
+		display: inline-block;
+		margin-right: 12px;
+		width: 4px;
+		height: 30px;
+		background-color: var(--primary);
+		vertical-align: -0.27em;
+	}
+}
+
+h3 {
+	color: var(--strong-fg);
+	margin-top: 48px;
+	margin-bottom: 0;
+	border-left: 2px solid var(--primary);
+	padding-left: 8px;
+}
+
+img {
+	width: 100%;
+}
+
+a {
+	color: var(--link);
+}
+
+blockquote {
+	color: var(--dimmed);
+	margin-left: 0;
+	border-left: 2px solid var(--dimmed);
+	padding: 0 16px;
+}
+
+iframe {
+	width: 100%;
+}
+
+figure {
+	margin: 1rem 0;
+	width: 100%;
+	max-width: fit-content;
+	border: 2px dashed var(--primaryDark);
+	padding: 16px 24px;
+
+	img {
+		width: 100%;
+	}
+
+	.item img {
+		cursor: zoom-in;
+	}
+
+	figcaption {
+		color: var(--dimmed);
+		&::before {
+			content: '▲ ';
+			font-size: 0.7em;
+		}
+	}
+}
+
+._emoji {
+	width: 2em;
+	height: 2em;
+	vertical-align: middle;
+}
+
+._article-card {
+    background: var(--content-bg);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+
+._fluid {
+	width: 100%;
+}

@@ -9,7 +9,7 @@ date: "2023/12/25 00:00:00"
 
 <b style="font-size: 3em; color: var(--primary)">🎄メリークリスマス！！🎅</b>
 
-<iframe src="https://adventar.org/calendars/8534/embed" style="border: none; height: 437px; overflow: hidden" class="fluid"></iframe>
+<iframe src="https://adventar.org/calendars/8534/embed" style="border: none; height: 437px; overflow: hidden" class="_fluid"></iframe>
 
 2023年、シュリンピア帝国1周年を迎えた年でもあり、激動の1年でもありました。
 

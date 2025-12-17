@@ -4,6 +4,7 @@ import Article from '../components/Article.astro';
 import { urusaiLinks } from '../scripts/urusai-links';
 import yon from '../assets/4.png';
 import { GagView } from '../components/domains/gyagu/GagView';
+console.log(yon);
 ---
 
 <Layout title="るちかのうるさいと" description="だじゃれだ～戯れとこｗ">
@@ -19,7 +20,7 @@ import { GagView } from '../components/domains/gyagu/GagView';
 		<p><img src="https://mk.shrimpia.network/twemoji/1f990.svg" style="height: 1em"/>「えー、びみょう。」</p>
 		<p><img src="https://mk.shrimpia.network/twemoji/1f988.svg" style="height: 1em"/>「さめたわ…」</p>
 		<p><img src="https://mk.shrimpia.network/twemoji/1f525.svg" style="height: 1em"/>「ﾋｯ」</p>
-		<p><img src={yon} style="height: 1em"/>「4!」</p>
+		<p><img src={yon.src} style="height: 1em"/>「4!」</p>
 	</Article>
 </Layout>
 

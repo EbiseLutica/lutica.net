@@ -2,6 +2,8 @@
 import Navbar from '../components/Navbar.astro';
 import 'photoswipe/style.css';
 import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css';
+import '../styles/style.scss';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../scripts/const';
 
 export interface Props {
 	title?: string;
@@ -9,12 +11,8 @@ export interface Props {
 	root?: boolean;
 }
 
-const {root} = Astro.props;
-
-const BASE_TITLE = 'Ebise Lutica';
-
-const title = Astro.props.title ? `${Astro.props.title} | ${BASE_TITLE}` : BASE_TITLE;
-const description = Astro.props.description ?? '海老瀬るちか。いろいろな創作とゲームが好きです。';
+const title = Astro.props.title ? `${Astro.props.title} | ${SITE_TITLE}` : SITE_TITLE;
+const description = Astro.props.description ?? SITE_DESCRIPTION;
 const themeColor = '#651622';
 ---
 
@@ -34,12 +32,12 @@ const themeColor = '#651622';
 		<meta property="og:type" content={title ? 'article' : 'website'} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:site_name" content={BASE_TITLE} />
+		<meta property="og:site_name" content={SITE_TITLE} />
 		<meta property="og:image" content="/favicon.png" />
 	</head>
 	<body id="root">
-		{!root && <Navbar />}
-		<main class={!root ? 'non-root' : ''}>
+		<Navbar />
+		<main>
 			<slot />
 		</main>
 		<footer>
@@ -51,16 +49,11 @@ const themeColor = '#651622';
 <script>
 	import PhotoSwipe from 'photoswipe';
 	import PhotoSwipeLightbox from 'photoswipe/lightbox';
-	import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin';
 
 	const lightbox = new PhotoSwipeLightbox({
-	gallery: '#root',
-	children: '.item',
-	pswpModule: PhotoSwipe,
-	});
-
-	const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
-	type: 'auto',
+		gallery: '#root',
+		children: '.item',
+		pswpModule: PhotoSwipe,
 	});
 
 	const theme = window.matchMedia('(prefers-color-scheme: dark)');
@@ -79,178 +72,18 @@ const themeColor = '#651622';
 	}
 
 	main {
-		min-height: calc(100vh - 384px);
-		padding-bottom: 96px;
+		padding-top: 64px;
+		min-height: calc(100vh - 128px);
 	}
 
 	footer {
-		text-align: center;
-		padding: 128px 0;
-		background-image: url('/bg-darker.jpg');
-		background-size: cover;
-		background-attachment: fixed;
-		font-weight: bold;
-		color: white;
-		box-shadow: 0 0 64px 48px rgba(0, 0, 0, 0.6) inset;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 128px;
+		
 		> span {
 			opacity: 0.6;
 		}
 	}
-</style>
-
-<style lang="scss" is:global>
-html {
-	--foreground: #211520;
-	--background: #fff1f2;
-	--primary: #B93E43;
-	--primaryDark: #9c2d3e;
-	--link: #a531ec;
-	--dimmed: #8995A8;
-	--warn: #ecbd15;
-	--success: #6f8e4d;
-	--danger: #f44336;
-	
-	&[data-theme="dark"] {
-		/* NOTE: http://colormind.io/bootstrap/ で作った */
-		--foreground: #F4F7F3;
-		--background: #211520;
-		--primary: #B93E43;
-		--primaryDark: #651622;
-		--link: #b46fde;
-		--dimmed: #8995A8;
-		--warn: #ecbd15;
-		--success: #6f8e4d;
-		--danger: #f44336;
-	}
-	
-	background-color: var(--background);
-	color: var(--foreground);
-	font-family: "Koruri", sans-serif;
-	font-size: 16px;
-	line-height: 2;
-}
-
-::selection {
-	background-color: var(--primary);
-}
-
-.hstack {
-	display: flex;
-	gap: 8px;
-}
-
-p {
-	margin-bottom: 10px;
-
-	+ p {	
-		margin-top: 0;
-	}
-}
-
-h1 {
-	margin: 0;
-}
-
-h2 {
-	margin-top: 64px;
-	margin-bottom: 0;
-	border-bottom: 2px solid var(--primary);
-	&::before {
-		content: '';
-		display: inline-block;
-		margin-right: 12px;
-		width: 4px;
-		height: 30px;
-		background-color: var(--primary);
-		vertical-align: -0.27em;
-	}
-}
-
-h3 {
-	margin-top: 48px;
-	margin-bottom: 0;
-	border-left: 2px solid var(--primary);
-	padding-left: 8px;
-}
-
-img {
-	width: 100%;
-}
-
-a {
-color: var(--link);
-}
-
-blockquote {
-	color: var(--dimmed);
-	margin-left: 0;
-	border-left: 2px solid var(--dimmed);
-	padding-left: 16px;
-}
-
-.button {
-	padding: 4px 16px;
-	line-height: 1.5;
-	font-weight: bold;
-	color: var(--foreground);
-	border: 2px solid var(--foreground);
-	cursor: pointer;
-	text-decoration: none;
-	border-radius: 12px;
-
-	&.disabled, &:disabled {
-		opacity: 0.5;
-	}
-
-	&.primary {
-		border-color: var(--primary);
-		background: 2px var(--primary);
-	}
-
-	&:hover {
-		filter: brightness(1.1);
-	}
-
-	&:active {
-		filter: brightness(0.7);
-	}
-}
-
-.fluid {
-	width: 100%;
-}
-
-iframe {
-	width: 100%;
-}
-
-figure {
-	margin: 1rem 0;
-	width: 100%;
-	max-width: fit-content;
-	border: 2px dashed var(--primaryDark);
-	padding: 16px 24px;
-
-	img {
-		width: 100%;
-	}
-
-	.item img {
-		cursor: zoom-in;
-	}
-
-	figcaption {
-		color: var(--dimmed);
-		&::before {
-			content: '▲ ';
-			font-size: 0.7em;
-		}
-	}
-}
-
-.emoji {
-	width: 2em;
-	height: 2em;
-	vertical-align: middle;
-}
 </style>

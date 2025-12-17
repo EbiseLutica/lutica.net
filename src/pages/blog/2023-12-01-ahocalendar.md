@@ -7,7 +7,7 @@ date: "2023/12/1 00:00:00" # 公開日を書きなさい
 
 これは、[アホカレ Advent Calendar 2023](https://adventar.org/calendars/8754)の1日目の記事です。
 
-<iframe src="https://adventar.org/calendars/8754/embed" style="border: none; height: 437px; overflow: hidden" class="fluid"></iframe>
+<iframe src="https://adventar.org/calendars/8754/embed" style="border: none; height: 437px; overflow: hidden" class="_fluid"></iframe>
 
 アホの皆さん、こんにちは。自分はアホじゃないぞとキレているそこのあなた、普通にアホやと思う（ちくちく言葉）
 

@@ -1,0 +1,36 @@
+---
+import Article from '../components/Article.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Works">
+	<Article>
+		<h1>Works</h1>
+		<p>なんかいろいろつくってます。ちょっと紹介します。</p>
+		<div class="_vstack">
+			<div class="_card">
+				<h2>Promete</h2>
+				<p>C# / .NET 向けに開発中の2Dゲームエンジンです。扱いやすいAPI、豊富な機能、クロスプラットフォーム、高い拡張性を備えます。</p>
+				<p>わたしが使うために開発しているので癖がちょっとありますが、DXLibなどでちまちまゲーム画面を作っていた方に向いているかもしれません。</p>
+				<p><a href="https://promete.app" target="_blank" rel="noopener noreferrer">公式サイト</a></p>
+			</div>
+			<div class="_card">
+				<h2>Emoji Packer for Misskey</h2>
+				<p>Misskeyの絵文字管理画面からインポートできるzipファイルを作成できるサイトです。お手持ちの画像をアップロードするだけで、Misskey用の絵文字パックが作れます。</p>
+				<p><a href="https://emojipacker.lutic.at" target="_blank" rel="noopener noreferrer">emojipacker.lutic.at</a></p>
+			</div>
+			<div class="_card">
+				<h2>グレートエビチリウォール</h2>
+				<p>Cloudflare Workersで動作するMisskey APIおよびActivityPub inboxへのNGワードフィルターです。</p>
+				<p>今はMisskey側にNGワード機能が実装されたのであまり使われていませんが、Misskeyサーバーへの特定ワードをつぶやくスパムが横行した際に急遽作成したものです。</p>
+				<p><a href="https://github.com/shrimpia/great-ebichiri-wall" target="_blank" rel="noopener noreferrer">GitHub リポジトリ</a></p>
+			</div>
+		</div>
+	</Article>
+</Layout>
+
+<style lang="scss">
+h2 {
+	margin-top: 0;
+}
+</style>

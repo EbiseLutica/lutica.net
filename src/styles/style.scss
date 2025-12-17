@@ -1,20 +1,24 @@
 html {
-	--foreground: #000000;
-	--background: #FFE5E4;
-    --content-bg: #F8EEED;
-	--strong-fg: #000000;
-    --menubar-bg: rgba(219, 219, 219, 0.6);
-    --menubar-link-bg: rgba(180, 180, 180, 0.3);
-    --menubar-link-bg-active: rgba(120, 120, 120, 0.3);
-	--primary: #F24149;
-	--primaryDark: #F24149;
-	--link: #F24149;
-	--dimmed: #8995A8;
-	--warn: #ecbd15;
-	--success: #6f8e4d;
-	--danger: #f44336;
+	&[data-theme="light"] {
+		display: block;
+		--foreground: #000000;
+		--background: #FFE5E4;
+		--content-bg: #F8EEED;
+		--strong-fg: #000000;
+		--menubar-bg: rgba(219, 219, 219, 0.6);
+		--menubar-link-bg: rgba(180, 180, 180, 0.3);
+		--menubar-link-bg-active: rgba(120, 120, 120, 0.3);
+		--primary: #F24149;
+		--primaryDark: #F24149;
+		--link: #F24149;
+		--dimmed: #8995A8;
+		--warn: #ecbd15;
+		--success: #6f8e4d;
+		--danger: #f44336;
+	};
 	
 	&[data-theme="dark"] {
+		display: block;
 		/* NOTE: http://colormind.io/bootstrap/ で作った */
 		--foreground: #c9baba;
 		--background: #0f0f1a;
@@ -31,8 +35,8 @@ html {
 		--success: #6f8e4d;
 		--danger: #f44336;
 	}
-	
 	background-color: var(--background);
+	
 	color: var(--foreground);
 	font-family: "Koruri", sans-serif;
 	font-size: 16px;

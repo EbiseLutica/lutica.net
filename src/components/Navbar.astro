@@ -1,6 +1,6 @@
 ---
 import { SITE_TITLE } from "../scripts/const";
-import { ThemeButton } from "./ThemeButton";
+import ThemeButton from "./ThemeButton.astro";
 
 const {title} = Astro.props;
 ---
@@ -11,9 +11,9 @@ const {title} = Astro.props;
             <h1><a href="/">{SITE_TITLE} {title ? `| ${title}` : ''}</a></h1>
         </div>
         <div class="right">
-            <a href="/about">About</a>
-            <a href="/blog">Blog</a>
-            <ThemeButton className="button" client:load />
+            <a class="navbar-btn" href="/about">About</a>
+            <a class="navbar-btn" href="/blog">Blog</a>
+            <ThemeButton className="navbar-btn" />
         </div>
     </div>
 </div>
@@ -43,19 +43,6 @@ const {title} = Astro.props;
         display: flex;
         align-items: center;
         gap: 16px;
-        a {
-            color: currentColor;
-            text-decoration: none;
-            background: var(--menubar-link-bg);
-            padding: 8px 10px;
-            line-height: 1;
-            border-radius: 6px;
-            transition: background 0.1s ease;
-
-            &:hover {
-                background: var(--menubar-link-bg-active);
-            }
-        }
     }
 
     h1 {
@@ -75,6 +62,23 @@ const {title} = Astro.props;
 
     .right {
         margin-left: auto;
+    }
+}
+</style>
+
+<style lang="scss" is:global>
+.navbar-btn {
+    color: currentColor;
+    text-decoration: none;
+    background: var(--menubar-link-bg);
+    padding: 8px 10px;
+    line-height: 1;
+    border-radius: 6px;
+    border: none;
+    transition: background 0.1s ease;
+
+    &:hover {
+        background: var(--menubar-link-bg-active);
     }
 }
 </style>

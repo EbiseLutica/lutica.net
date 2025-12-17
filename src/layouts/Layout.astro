@@ -19,6 +19,12 @@ const themeColor = '#651622';
 <!DOCTYPE html>
 <html lang="ja">
 	<head>
+		<script is:inline>
+			const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches
+			const currentTheme = localStorage.getItem('theme') || 'system';
+			const finalTheme = currentTheme === 'system' ? (preferred ? 'dark' : 'light') : currentTheme;
+			document.documentElement.setAttribute('data-theme', finalTheme);
+		</script>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.png" />

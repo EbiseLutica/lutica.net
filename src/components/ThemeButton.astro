@@ -1,0 +1,66 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { className } = Astro.props;
+
+---
+
+<button class={className} id="theme-toggler-button">
+    <Icon class="icon" data-theme="system" name="tabler:device-desktop-filled" />
+    <Icon class="icon" data-theme="light" name="tabler:sun-filled" />
+    <Icon class="icon" data-theme="dark" name="tabler:moon-filled" />
+</button>
+
+<style lang="scss">
+    .icon {
+        display: none;
+        &.active {
+            display: inline;
+        }
+    }
+</style>
+
+<script>
+    // 必要な変数
+    const button = document.getElementById('theme-toggler-button');
+    const icons = {
+        system: button.querySelector('.icon[data-theme="system"]'),
+        light: button.querySelector('.icon[data-theme="light"]'),
+        dark: button.querySelector('.icon[data-theme="dark"]'),
+    };
+    const themes = ['system', 'light', 'dark'];
+    const matchResult = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // state
+    let currentTheme = localStorage.getItem('theme') || 'system';
+    let isDarkPreferred = matchResult.matches;
+
+    matchResult.addEventListener('change', (e) => {
+        isDarkPreferred = e.matches;
+        if (currentTheme === 'system') {
+            applyTheme();
+        }
+    });
+
+    const toggleTheme = () => {
+        const currentIndex = themes.indexOf(currentTheme);
+        const nextIndex = (currentIndex + 1) % themes.length;
+        currentTheme = themes[nextIndex];
+        applyTheme();
+        localStorage.setItem('theme', currentTheme);
+    };
+
+    const applyTheme = () => {
+        icons.system.classList.remove('active');
+        icons.light.classList.remove('active');
+        icons.dark.classList.remove('active');
+
+        const finalTheme = currentTheme === 'system' ? (isDarkPreferred ? 'dark' : 'light') : currentTheme;
+        document.documentElement.setAttribute('data-theme', finalTheme);
+
+        icons[currentTheme].classList.add('active');
+    };
+
+    applyTheme();
+    button.addEventListener('click', toggleTheme);
+</script>

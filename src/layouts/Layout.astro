@@ -11,7 +11,7 @@ export interface Props {
 
 const {root} = Astro.props;
 
-const BASE_TITLE = 'るちかどっとねっと。';
+const BASE_TITLE = 'Ebise Lutica';
 
 const title = Astro.props.title ? `${Astro.props.title} | ${BASE_TITLE}` : BASE_TITLE;
 const description = Astro.props.description ?? '海老瀬るちか。いろいろな創作とゲームが好きです。';
@@ -155,6 +155,15 @@ h2 {
 	margin-top: 64px;
 	margin-bottom: 0;
 	border-bottom: 2px solid var(--primary);
+	&::before {
+		content: '';
+		display: inline-block;
+		margin-right: 12px;
+		width: 4px;
+		height: 30px;
+		background-color: var(--primary);
+		vertical-align: -0.27em;
+	}
 }
 
 h3 {
@@ -237,5 +246,11 @@ figure {
 			font-size: 0.7em;
 		}
 	}
+}
+
+.emoji {
+	width: 2em;
+	height: 2em;
+	vertical-align: middle;
 }
 </style>

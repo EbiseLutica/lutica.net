@@ -1,5 +1,6 @@
 ---
 
+import { Icon } from 'astro-icon/components';
 export interface Props {
     path: string;
 	frontmatter: Record<string, any>;
@@ -9,15 +10,28 @@ const { path, frontmatter } = Astro.props;
 
 ---
 
-<article>
+<article class="article">
     <h2 class="title"><a href={path}>{frontmatter.title}</a></h2>
-    <aside style="color: var(--dimmed)">
-        投稿日：<time datetime={frontmatter.date}>{frontmatter.date}</time></aside>
+    <aside class="date">
+        <Icon name="bi:calendar-fill" /> <time datetime={frontmatter.date}>{frontmatter.date}</time>
+    </aside>
     <p>{frontmatter.description}</p>
 </article>
 
 <style lang="scss">
+    .article {
+        margin-top: 20px;
+        padding: 16px;
+        border: 2px dashed var(--dimmed);
+        border-radius: 12px;
+    }
+
+    .date {
+        color: var(--dimmed);
+        font-size: 0.9em;
+    }
     h2.title {
+        margin: 0;
         border-bottom: none;
     }
 </style>

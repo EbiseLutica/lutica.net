@@ -1,6 +1,7 @@
 ---
 import Content from '../components/Content.astro';
 import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
 
 const { frontmatter } = Astro.props;
 
@@ -8,11 +9,14 @@ const { frontmatter } = Astro.props;
 
 <Layout title={frontmatter.title}>
     <Content>
+        <a href="/blog">← ブログ一覧に戻る</a>
         <div class="blog-content">
-            <h1>{frontmatter.title}</h1>
-            <aside style="color: var(--dimmed)">
-                投稿日：<time datetime={frontmatter.date}>{frontmatter.date}</time></aside>
-            <hr>
+            <header class="hero">
+                <h1>{frontmatter.title}</h1>
+                <aside style="color: var(--dimmed)">
+                    <Icon name="bi:calendar-fill"/> <time datetime={frontmatter.date}>{frontmatter.date}</time>
+                </aside>
+            </header>
             <slot />
         </div>
     </Content>
@@ -20,8 +24,21 @@ const { frontmatter } = Astro.props;
 
 <style lang="scss" is:global>
     .blog-content {
+        header.hero {
+            margin-bottom: 3rem;
+            text-align: center;
+            padding-bottom: 1rem;
+            border-bottom: 2px dashed var(--dimmed);
+        }
+
         img {
             max-width: 100%;
+        }
+
+        hr {
+            margin: 3rem 0;
+            border: none;
+            border-bottom: 1px solid var(--dimmed);
         }
     }
 </style>

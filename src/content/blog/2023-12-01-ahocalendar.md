@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/Blog.astro
 title: "アホとの出会い"
 description: "アホカレ2023の記事。るなちとの出会い。"
 date: "2023/12/1 00:00:00" # 公開日を書きなさい

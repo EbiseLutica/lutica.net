@@ -2,8 +2,12 @@
 import Content from '../components/Content.astro';
 import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
+import { format } from 'date-fns';
 
 const { frontmatter } = Astro.props;
+
+const dateString = isNaN((frontmatter.date as Date).getTime()) ? '不明' : format(frontmatter.date as Date, 'yyyy/MM/dd');
+const isoString = isNaN((frontmatter.date as Date).getTime()) ? '' : (frontmatter.date as Date).toISOString();
 
 ---
 
@@ -14,7 +18,7 @@ const { frontmatter } = Astro.props;
             <header class="hero">
                 <h1>{frontmatter.title}</h1>
                 <aside style="color: var(--dimmed)">
-                    <Icon name="bi:calendar-fill"/> <time datetime={frontmatter.date}>{frontmatter.date}</time>
+                    <Icon name="bi:calendar-fill"/> <time datetime={isoString}>{dateString}</time>
                 </aside>
             </header>
             <article class="_article-card">

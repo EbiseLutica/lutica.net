@@ -1,6 +1,7 @@
 ---
 
 import { Icon } from 'astro-icon/components';
+import { format } from 'date-fns';
 export interface Props {
     path: string;
 	frontmatter: Record<string, any>;
@@ -8,13 +9,16 @@ export interface Props {
 
 const { path, frontmatter } = Astro.props;
 
+const dateString = isNaN((frontmatter.date as Date).getTime()) ? '不明' : format(frontmatter.date as Date, 'yyyy/MM/dd');
+const isoString = isNaN((frontmatter.date as Date).getTime()) ? '' : (frontmatter.date as Date).toISOString();
+
 ---
 
 <a href={path} class="root">
     <article class="article">
         <h2 class="title">{frontmatter.title}</h2>
         <aside class="date">
-            <Icon name="bi:calendar-fill" /> <time datetime={frontmatter.date}>{frontmatter.date}</time>
+            <Icon name="bi:calendar-fill" /> <time datetime={isoString}>{dateString}</time>
         </aside>
         <p>{frontmatter.description}</p>
     </article>

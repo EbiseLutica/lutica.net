@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/Blog.astro
 title: ""
 description: "" 
 date: "" # 公開日を書きなさい

@@ -1,0 +1,21 @@
+---
+const emojiName = await Astro.slots.render('default');
+const trimmedEmojiName = emojiName.trim().replace(/<[^>]*>/g, '');
+const emojiUrl = `https://mk.shrimpia.network/emoji/${trimmedEmojiName}.webp`;
+---
+
+<img 
+  src={emojiUrl} 
+  alt={trimmedEmojiName}
+  class="emoji"
+  loading="lazy"
+/>
+
+<style>
+  .emoji {
+    display: inline-block;
+    height: 2em;
+    width: auto;
+    vertical-align: middle;
+  }
+</style>

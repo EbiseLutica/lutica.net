@@ -18,7 +18,7 @@ const isoString = isNaN((frontmatter.date as Date).getTime()) ? '' : (frontmatte
             <header class="hero">
                 <h1>{frontmatter.title}</h1>
                 <aside style="color: var(--dimmed)">
-                    <Icon name="bi:calendar-fill"/> <time datetime={isoString}>{dateString}</time>
+                    <Icon name="tabler:calendar-event"/> <time datetime={isoString}>{dateString}</time>
                 </aside>
             </header>
             <article class="_article-card">

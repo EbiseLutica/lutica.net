@@ -3,12 +3,16 @@ import { SITE_TITLE } from "../scripts/const";
 import ThemeButton from "./ThemeButton.astro";
 
 const {title} = Astro.props;
+const {DEV} = import.meta.env;
 ---
 
 <div class="root">
     <div class="inner">
         <div class="left">
-            <h1><a href="/">{SITE_TITLE} {title ? `| ${title}` : ''}</a></h1>
+            <h1>
+                <a href="/">{SITE_TITLE} {title ? `| ${title}` : ''}</a>
+                {DEV ? <span class="dev-mode-badge">DEV MODE</span> : ''}
+            </h1>
         </div>
         <div class="right">
             <a class="navbar-btn" href="/about">About</a>
@@ -63,6 +67,16 @@ const {title} = Astro.props;
     .right {
         margin-left: auto;
     }
+}
+
+.dev-mode-badge {
+    margin-left: 6px;
+    font-size: 0.7rem;
+    color: white;
+    background-color: var(--danger);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
 }
 </style>
 

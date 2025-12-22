@@ -177,3 +177,33 @@ details {
 	flex-direction: row;
 	gap: 1rem;
 }
+
+._sns-buttons {
+	display: flex;
+	justify-content: center;
+}
+._sns-button {
+	--brand-bg: white;
+	--brand-fg: black;
+	width: 48px;
+	height: 48px;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.4rem;
+	border: none;
+	border-radius: 999px;
+	border-color: transparent;
+	background-color: transparent;
+	color: var(--foreground);
+	cursor: pointer;
+
+	transition: all 0.1s ease-out;
+
+	&:hover {
+		border-color: var(--brand-bg);
+		background: var(--brand-bg);
+		color: var(--brand-fg);
+	}
+}

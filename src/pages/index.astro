@@ -8,20 +8,20 @@ import { Icon } from 'astro-icon/components';
 		<div class="card">
 			<h1>るちーか</h1>
 			<p class="description">ものづくりとゲームが好きです。</p>
-			<div class="sns">
-				<a href="https://mk.lutic.at/@lutica" style="--brand-bg: #A1CA03; --brand-fg: white" class="sns-button" target="_blank" rel="noopener noreferrer">
+			<div class="_sns-buttons">
+				<a href="https://mk.lutic.at/@lutica" style="--brand-bg: #A1CA03; --brand-fg: white" class="_sns-button" target="_blank" rel="noopener noreferrer">
 					<Icon name="simple-icons:misskey" />
 				</a>
-				<a href="https://skeb.jp/@lutica" style="--brand-bg: #28837f" class="sns-button" target="_blank" rel="noopener noreferrer">
+				<a href="https://skeb.jp/@lutica" style="--brand-bg: #28837f" class="_sns-button" target="_blank" rel="noopener noreferrer">
 					<Icon name="skeb" />
 				</a>
-				<a href="https://x.com/lutica_f" class="sns-button" target="_blank" rel="noopener noreferrer">
+				<a href="https://x.com/lutica_f" class="_sns-button" target="_blank" rel="noopener noreferrer">
 					<Icon name="simple-icons:x" />
 				</a>
-				<a href="https://github.com/ebiselutica" class="sns-button" target="_blank" rel="noopener noreferrer">
+				<a href="https://github.com/ebiselutica" class="_sns-button" target="_blank" rel="noopener noreferrer">
 					<Icon name="simple-icons:github" />
 				</a>
-				<a href="https://soundcloud.com/lutica_sc" style="--brand-bg: #FF5500; --brand-fg: white" class="sns-button" target="_blank" rel="noopener noreferrer">
+				<a href="https://soundcloud.com/lutica_sc" style="--brand-bg: #FF5500; --brand-fg: white" class="_sns-button" target="_blank" rel="noopener noreferrer">
 					<Icon name="simple-icons:soundcloud" />
 				</a>
 			</div>
@@ -89,34 +89,6 @@ $page-max-width: 500px;
 
 		.description {
 			margin-bottom: 20px;
-		}
-
-		.sns {
-			display: flex;
-			justify-content: center;
-		}
-		.sns-button {
-			--brand-bg: white;
-			--brand-fg: black;
-			width: 48px;
-			height: 48px;
-			padding: 0;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 1.4rem;
-			border-radius: 999px;
-			border-color: transparent;
-			background-color: transparent;
-			color: var(--foreground);
-
-			transition: all 0.1s ease-out;
-
-			&:hover {
-				border-color: var(--brand-bg);
-				background: var(--brand-bg);
-				color: var(--brand-fg);
-			}
 		}
 	}
 

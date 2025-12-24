@@ -1,7 +1,7 @@
 html {
 	&[data-theme="light"] {
 		display: block;
-		--foreground: #000000;
+		--foreground: #393535;
 		--background: #FFE5E4;
 		--content-bg: #F8EEED;
 		--strong-fg: #000000;
@@ -11,7 +11,7 @@ html {
 		--primary: #F24149;
 		--primaryDark: #F24149;
 		--link: #F24149;
-		--dimmed: #8995A8;
+		--dimmed: #656e7c;
 		--warn: #ecbd15;
 		--success: #6f8e4d;
 		--danger: #f44336;
@@ -22,7 +22,7 @@ html {
 		/* NOTE: http://colormind.io/bootstrap/ で作った */
 		--foreground: #c9baba;
 		--background: #0f0f1a;
-		--strong-fg: #ffffff;
+		--strong-fg: #e1e1e1;
         --content-bg: #161625;
         --menubar-bg: rgba(44, 44, 65, 0.6);
         --menubar-link-bg: rgba(88, 88, 132, 0.3);
@@ -91,6 +91,11 @@ img {
 
 a {
 	color: var(--link);
+}
+
+b, strong {
+	color: var(--strong-fg);
+	font-weight: bold;
 }
 
 blockquote {

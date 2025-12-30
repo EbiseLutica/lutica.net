@@ -19,6 +19,7 @@ const isoString = isNaN((frontmatter.date as Date).getTime()) ? '' : (frontmatte
         <h2 class="title">{frontmatter.title}</h2>
         <aside class="date">
             <Icon name="tabler:calendar-event" /> <time datetime={isoString}>{dateString}</time>
+            {frontmatter.draft ? ' (下書き)' : ''}
         </aside>
         <p>{frontmatter.description}</p>
     </article>

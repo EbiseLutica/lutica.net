@@ -1,0 +1,244 @@
+---
+import Article from '../../components/Article.astro';
+import Layout from '../../layouts/Layout.astro';
+import EmojiRanking from '../../components/domains/shrimpia/EmojiRanking.astro';
+import Emoji from '../../components/Emoji.astro';
+import SnsShare from '../../components/SnsShare.astro';
+
+const months = [1,2,3,4,5,6,7,8,9,10,11,12];
+
+---
+
+<Layout title="リアクションランキング 2025年版" description="シュリンピアで使用された絵文字リアクションのランキングです。データは2025年のものを集計しています。">
+    <div class="page-container">
+        <button class="toc-toggle" id="tocToggle" aria-label="目次を開く">
+            <span>目次</span>
+        </button>
+
+        <aside class="toc-sidebar" id="tocSidebar">
+            <div class="toc-header">
+                <strong>目次</strong>
+                <button class="toc-close" id="tocClose" aria-label="閉じる">×</button>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#annual">年間ランキング</a></li>
+                    {months.map(month => (
+                        <li><a href={`#month-${month}`}>{month}月ランキング</a></li>
+                    ))}
+                </ul>
+            </nav>
+        </aside>
+
+        <Article>
+            <header style="text-align: center; margin-bottom: 2rem;">
+                <h1>リアクションランキング#2025</h1>
+                <p>2025年のシュリンピアで使用された絵文字リアクションを集計し、ランキングにしました！</p>
+                <p>あなたのお気に入りの絵文字は何位かな～？ <Emoji>luticatreachflip</Emoji></p>
+                <SnsShare title="リアクションランキング 2025年版" />
+            </header>
+
+
+            <main class="_article-card">
+                <h2 id="annual">年間</h2>
+                <EmojiRanking date="2025" limit={50}/>
+
+                {months.map(month => (
+                    <>
+                        <h2 id={`month-${month}`}>{month}月</h2>
+                        <EmojiRanking date={`2025${month < 10 ? `0${month}` : month}`} limit={50}/>
+                    </>
+                ))}
+            </main>
+
+            <footer style="text-align: center; margin-top: 3rem;">
+                <SnsShare title="リアクションランキング 2025年版" />
+            </footer>
+        </Article>
+    </div>
+
+    <div class="toc-overlay" id="tocOverlay"></div>
+</Layout>
+
+<style lang="scss">
+h2 {
+    margin-bottom: 2rem;
+
+    &#annual {
+        margin-top: 0;
+    }
+}
+
+.page-container {
+    display: flex;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.toc-toggle {
+    display: none;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 999;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+.toc-sidebar {
+    position: sticky;
+    top: 6rem;
+    height: fit-content;
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+    width: 250px;
+    flex-shrink: 0;
+    order: 2;
+
+    .toc-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        strong {
+            font-size: 1.1rem;
+        }
+
+        .toc-close {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            width: 2rem;
+            height: 2rem;
+            line-height: 1;
+            color: var(--foreground);
+        }
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            margin: 0;
+
+            a {
+                display: block;
+                padding: 0.5rem 0.75rem;
+                color: var(--foreground);
+                text-decoration: none;
+                border-radius: 0.25rem;
+                transition: background-color 0.2s;
+
+                &:hover {
+                    background-color: var(--primary);
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.toc-overlay {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .page-container {
+        flex-direction: column;
+    }
+
+    .toc-toggle {
+        display: block;
+    }
+
+    .toc-sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 280px;
+        max-width: 80vw;
+        height: 100vh;
+        max-height: 100vh;
+        background: var(--background);
+        border-left: 1px solid var(--border, #e0e0e0);
+        padding: 1.5rem;
+        z-index: 1000;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        order: initial;
+
+        &.open {
+            transform: translateX(0);
+        }
+
+        .toc-header .toc-close {
+            display: block;
+        }
+    }
+
+    .toc-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+
+        &.open {
+            display: block;
+        }
+    }
+}
+</style>
+
+<script>
+const tocToggle = document.getElementById('tocToggle');
+const tocClose = document.getElementById('tocClose');
+const tocSidebar = document.getElementById('tocSidebar');
+const tocOverlay = document.getElementById('tocOverlay');
+
+function openToc() {
+    tocSidebar?.classList.add('open');
+    tocOverlay?.classList.add('open');
+}
+
+function closeToc() {
+    tocSidebar?.classList.remove('open');
+    tocOverlay?.classList.remove('open');
+}
+
+tocToggle?.addEventListener('click', openToc);
+tocClose?.addEventListener('click', closeToc);
+tocOverlay?.addEventListener('click', closeToc);
+
+// 目次のリンクをクリックしたらモバイルでは閉じる
+const tocLinks = tocSidebar?.querySelectorAll('a');
+tocLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+            closeToc();
+        }
+    });
+});
+</script>

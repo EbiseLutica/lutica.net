@@ -1,0 +1,65 @@
+---
+import { readFileSync } from 'fs';
+import Emoji from '../../Emoji.astro';
+
+interface Props {
+   date: string;
+   limit?: number;
+}
+
+const props = Astro.props;
+
+const path = `src/data/reaction-ranking${props.date}.csv`;
+const rawData = readFileSync(path, 'utf-8');
+
+// 1行目はヘッダーで、2行目以降が絵文字のshortcodeと個数のデータ
+let data = rawData
+  .trim()
+  .split('\n')
+  .slice(1)
+  .map(line => {
+    const [shortcode, count] = line.split(',');
+    return { shortcode: shortcode.replace(/:/g, ''), count: Number(count) };
+  });
+
+if (props.limit) {
+  data = data.slice(0, props.limit);
+}
+---
+
+<ol>
+  {data.map((item, i) => (
+    <li>
+      <span class="rank" data-rank={i}>{i + 1}位</span>
+      <span class="count">{item.count} 件</span>
+      <Emoji>{item.shortcode}</Emoji>
+    </li>
+  ))}
+</ol>
+
+<style lang="scss">
+  ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 500px;
+
+    li {
+      display: flex;
+      gap: 0.5rem;
+
+      .rank {
+        font-weight: bold;
+        width: 2.3rem;
+      }
+
+      .count {
+        color: var(--dimmed);
+        width: 5rem;
+      }
+    }
+  }
+</style>

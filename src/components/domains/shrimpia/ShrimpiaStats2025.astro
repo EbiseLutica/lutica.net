@@ -1,0 +1,232 @@
+---
+import { Icon } from 'astro-icon/components';
+
+// 12月31日のデータから1/1のデータを引いた各データ
+const userDiff = 1701 - 1582;
+const noteDiff = 2497290 - 1980931;
+const addedEmojis = 793;
+const addAvatarDecorations = 18;
+const uploadedFiles = 30292;
+const uploadedFileSizeSum = 26898383498; // バイト単位
+const uploadedFileSizeSumGB = (uploadedFileSizeSum / (1024 ** 3)).toFixed(2); // ギガバイト単位
+const filesBreakdown = {
+  image: 14407 + 2 + 5503 + 9186 + 2 + 599 + 2 + 3 + 5,
+  audio: 4 + 9 + 59 + 1 + 1,
+  video: 1 + 1 + 98 + 380,
+  others: 2 + 7 + 1 + 18 + 1,
+};
+
+---
+
+<div class="stats-container">
+  <div class="stat-card blue">
+    <div class="stat-icon"><Icon name="tabler:users" /></div>
+    <div class="stat-content">
+      <div class="stat-value">{userDiff.toLocaleString()}</div>
+      <div class="stat-label">人の新規入国</div>
+    </div>
+  </div>
+
+  <div class="stat-card green">
+    <div class="stat-icon"><Icon name="tabler:pencil" /></div>
+    <div class="stat-content">
+      <div class="stat-value">{noteDiff.toLocaleString()}</div>
+      <div class="stat-label">件の新たなノート</div>
+    </div>
+  </div>
+
+  <div class="stat-card yellow">
+    <div class="stat-icon"><Icon name="tabler:mood-smile" /></div>
+    <div class="stat-content">
+      <div class="stat-value">{addedEmojis.toLocaleString()}</div>
+      <div class="stat-label">件の絵文字追加</div>
+    </div>
+  </div>
+
+  <div class="stat-card purple">
+    <div class="stat-icon"><Icon name="tabler:sparkles" /></div>
+    <div class="stat-content">
+      <div class="stat-value">{addAvatarDecorations.toLocaleString()}</div>
+      <div class="stat-label">件のアバターデコレーション追加</div>
+    </div>
+  </div>
+
+  <div class="stat-card stat-card-large orange">
+    <div class="stat-icon"><Icon name="tabler:upload" /></div>
+    <div class="stat-content">
+      <div class="stat-value">{uploadedFiles.toLocaleString()}</div>
+      <div class="stat-label">件のアップロード</div>
+
+      <div class="stat-details">
+        <div class="stat-total">
+          合計 <strong>{uploadedFileSizeSumGB} GB</strong>
+        </div>
+
+        <div class="stat-breakdown">
+          <div class="breakdown-title">内訳:</div>
+          <ul class="breakdown-list">
+            <li>
+              <span class="breakdown-icon"><Icon name="tabler:photo" /></span>
+              <span class="breakdown-label">画像:</span>
+              <span class="breakdown-value">{filesBreakdown.image.toLocaleString()} 件</span>
+            </li>
+            <li>
+              <span class="breakdown-icon"><Icon name="tabler:music" /></span>
+              <span class="breakdown-label">音声:</span>
+              <span class="breakdown-value">{filesBreakdown.audio.toLocaleString()} 件</span>
+            </li>
+            <li>
+              <span class="breakdown-icon"><Icon name="tabler:video" /></span>
+              <span class="breakdown-label">動画:</span>
+              <span class="breakdown-value">{filesBreakdown.video.toLocaleString()} 件</span>
+            </li>
+            <li>
+              <span class="breakdown-icon"><Icon name="tabler:file" /></span>
+              <span class="breakdown-label">その他:</span>
+              <span class="breakdown-value">{filesBreakdown.others.toLocaleString()} 件</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  :global(html[data-theme='light']) {
+    --card-blue-bg: #e9f1ff;
+    --card-blue-fg: #0862df;
+    --card-green-bg: #dcffe0;
+    --card-green-fg: #05af3e;
+    --card-yellow-bg: #fff6da;
+    --card-yellow-fg: #e99f00;
+    --card-orange-bg: #ffefe5;
+    --card-orange-fg: #ff4800;
+    --card-purple-bg: #f5e9ff;
+    --card-purple-fg: #a349ff;
+  }
+  :global(html[data-theme='dark']) {
+    --card-blue-bg: #051429;
+    --card-blue-fg: #3a82ff;
+    --card-green-bg: #051d0d;
+    --card-green-fg: #25cd5d;
+    --card-yellow-bg: #2f2105;
+    --card-yellow-fg: #cba527;
+    --card-orange-bg: #281605;
+    --card-orange-fg: #e08020;
+    --card-purple-bg: #220f29;
+    --card-purple-fg: #d18aff;
+  }
+
+  .stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .stat-card {
+    background: var(--background);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+
+    @mixin colored($name) {
+      &.#{$name} {
+        background: var(--card-#{$name}-bg);
+        color: var(--card-#{$name}-fg);
+        border-color: var(--card-#{$name}-fg);
+      }
+    }
+    
+    @include colored(blue);
+    @include colored(green);
+    @include colored(yellow);
+    @include colored(orange);
+    @include colored(purple);
+
+    &.stat-card-large {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .stat-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .stat-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.95rem;
+    margin-left: 0.8rem;
+    line-height: 1.4;
+    opacity: 0.7;
+  }
+
+  .stat-details {
+    margin-top: 1rem;
+    opacity: 0.9;
+  }
+
+  .stat-total {
+    font-size: 1rem;
+
+    strong {
+      color: inherit;
+    }
+  }
+
+  .stat-breakdown {
+    .breakdown-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 0 1rem;
+      display: flex;
+      flex-direction: column;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        padding: 0.25rem 0;
+        &:hover {
+          background: rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+
+    .breakdown-icon {
+      font-size: 1.2rem;
+      width: 1.5rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .breakdown-value {
+      font-weight: 600;
+      margin-left: auto;
+    }
+  }
+</style>

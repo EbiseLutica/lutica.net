@@ -12,14 +12,15 @@ const emojiUrl = `https://mk.shrimpia.network/emoji/${trimmedEmojiName}.webp`;
 <img 
   src={emojiUrl} 
   alt={alt ?? trimmedEmojiName}
+  title={alt ?? trimmedEmojiName}
   class="emoji"
+  height="32"
   loading="lazy"
 />
 
 <style lang="scss">
   .emoji {
     display: inline-block;
-    height: 2em;
     width: auto;
     vertical-align: middle;
     transform-origin: center;

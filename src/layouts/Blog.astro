@@ -1,5 +1,6 @@
 ---
 import Content from '../components/Content.astro';
+import SnsShare from '../components/SnsShare.astro';
 import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
 import { format } from 'date-fns';
@@ -9,30 +10,7 @@ const { frontmatter } = Astro.props;
 const dateString = isNaN((frontmatter.date as Date).getTime()) ? '不明' : format(frontmatter.date as Date, 'yyyy/MM/dd');
 const isoString = isNaN((frontmatter.date as Date).getTime()) ? '' : (frontmatter.date as Date).toISOString();
 
-const shareTitle = encodeURIComponent(`${frontmatter.title} - るちーかの長いノート`);
-const shareURL = encodeURIComponent(Astro.request.url);
-const shareText = `${shareTitle}%0A%0A${shareURL}`;
-
-const shares = [{
-    name: 'misskey',
-    url: `https://misskey-hub.net/share/?text=${shareText}&visibility=public&localOnly=0&manualInstance=https:%2F%2Fmk.shrimpia.network`,
-    buttonBg: '#A1CA03',
-    buttonFg: 'white',
-    icon: 'simple-icons:misskey',
-}, {
-    name: 'mastodon',
-    url: `https://donshare.net/share.html?text=${shareTitle}&url=${shareURL}`,
-    buttonBg: '#6364FF',
-    buttonFg: 'white',
-    icon: 'simple-icons:mastodon',
-}, {
-    name: 'x',
-    url: `https://x.com/intent/tweet?text=${shareText}`,
-    buttonBg: 'black',
-    buttonFg: 'white',
-    icon: 'simple-icons:x',
-}];
-
+const shareTitle = `${frontmatter.title} - るちーかの長いノート`;
 ---
 
 <Layout title={frontmatter.title}>
@@ -48,48 +26,12 @@ const shares = [{
                 <slot />
             </article>
             <footer class="article-footer">
-                <div class="share-buttons">
-                    <h2>この記事をシェアする</h2>
-                    <div class="_sns-buttons">
-                        {shares.map(share => (
-                            <a
-                                href={share.url}
-                                style={`--brand-bg: ${share.buttonBg}; --brand-fg: ${share.buttonFg}`}
-                                class="_sns-button"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <Icon name={share.icon} />
-                            </a>
-                        ))}
-                        <button type="button" class="_sns-button" style="--brand-bg: var(--primary); --brand-fg: white" id="blog-web-share-api-button">
-                            <Icon name="tabler:share" />
-                        </button>
-                    </div>
-                </div>
+                <SnsShare title={shareTitle} />
                 <a class="back-button" href="/blog">← ブログ一覧に戻る</a>
             </footer>
         </article>
     </Content>
 </Layout>
-
-<script define:vars={{ shareTitle, shareURL }}>
-    document.getElementById('blog-web-share-api-button').addEventListener('click', async () => {
-        if (!navigator.share) {
-            alert('お使いのブラウザはこの方法での共有に対応していません。');
-            return;
-        }
-        try {
-            await navigator.share({
-                title: decodeURIComponent(shareTitle),
-                url: decodeURIComponent(shareURL),
-            });
-        } catch (err) {
-            console.error('Error sharing:', err);
-            alert('共有に失敗しました。' + err.message);
-        }
-    });
-</script>
 
 <style lang="scss">
     .blog {
@@ -112,19 +54,6 @@ const shares = [{
         .article-footer {
             margin-top: 3rem;
             text-align: center;
-        }
-
-        .share-buttons {
-            margin-bottom: 2rem;
-
-            > h2 {
-                border: none;
-                margin-top: 0;
-                font-size: 1.2rem;
-                &::before {
-                    display: none;
-                }
-            }
         }
 
         .back-button {

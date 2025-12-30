@@ -6,5 +6,6 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx(), react(), icon()]
+  integrations: [mdx(), react(), icon()],
+  site: 'https://lutic.at',
 });

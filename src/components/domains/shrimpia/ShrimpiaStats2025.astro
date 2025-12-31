@@ -22,7 +22,7 @@ const filesBreakdown = {
   <div class="stat-card blue">
     <div class="stat-icon"><Icon name="tabler:users" /></div>
     <div class="stat-content">
-      <div class="stat-value">{userDiff.toLocaleString()}</div>
+      <div class="stat-value" data-target={userDiff}>0</div>
       <div class="stat-label">人の新規入国</div>
     </div>
   </div>
@@ -30,7 +30,7 @@ const filesBreakdown = {
   <div class="stat-card green">
     <div class="stat-icon"><Icon name="tabler:pencil" /></div>
     <div class="stat-content">
-      <div class="stat-value">{noteDiff.toLocaleString()}</div>
+      <div class="stat-value" data-target={noteDiff}>0</div>
       <div class="stat-label">件の新たなノート</div>
     </div>
   </div>
@@ -38,7 +38,7 @@ const filesBreakdown = {
   <div class="stat-card yellow">
     <div class="stat-icon"><Icon name="tabler:mood-smile" /></div>
     <div class="stat-content">
-      <div class="stat-value">{addedEmojis.toLocaleString()}</div>
+      <div class="stat-value" data-target={addedEmojis}>0</div>
       <div class="stat-label">件の絵文字追加</div>
     </div>
   </div>
@@ -46,7 +46,7 @@ const filesBreakdown = {
   <div class="stat-card purple">
     <div class="stat-icon"><Icon name="tabler:sparkles" /></div>
     <div class="stat-content">
-      <div class="stat-value">{addAvatarDecorations.toLocaleString()}</div>
+      <div class="stat-value" data-target={addAvatarDecorations}>0</div>
       <div class="stat-label">件のアバターデコレーション追加</div>
     </div>
   </div>
@@ -54,7 +54,7 @@ const filesBreakdown = {
   <div class="stat-card stat-card-large orange">
     <div class="stat-icon"><Icon name="tabler:upload" /></div>
     <div class="stat-content">
-      <div class="stat-value">{uploadedFiles.toLocaleString()}</div>
+      <div class="stat-value" data-target={uploadedFiles}>0</div>
       <div class="stat-label">件のアップロード</div>
 
       <div class="stat-details">
@@ -91,6 +91,47 @@ const filesBreakdown = {
     </div>
   </div>
 </div>
+
+<script>
+  import { animate } from 'animejs';
+
+  // Intersection Observerを使って、画面内に入ったらアニメーション開始
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const statValues = entry.target.querySelectorAll('.stat-value[data-target]');
+
+          statValues.forEach((element) => {
+            const target = parseInt((element as HTMLElement).dataset.target || '0', 10);
+            const obj = { value: 0 };
+
+            animate(obj, {
+              value: target,
+              duration: 1000,
+              round: 1,
+              onUpdate: () => {
+                element.textContent = Math.floor(obj.value).toLocaleString('en-US');
+              },
+            });
+          });
+
+          // アニメーション開始したら監視解除
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.2, // 20%表示されたら発火
+    }
+  );
+
+  // .stats-containerを監視
+  const statsContainer = document.querySelector('.stats-container');
+  if (statsContainer) {
+    observer.observe(statsContainer);
+  }
+</script>
 
 <style lang="scss">
   :global(html[data-theme='light']) {
@@ -144,6 +185,11 @@ const filesBreakdown = {
         background: var(--card-#{$name}-bg);
         color: var(--card-#{$name}-fg);
         border-color: var(--card-#{$name}-fg);
+
+        *::selection {
+          background: var(--card-#{$name}-fg);
+          color: white;
+        }
       }
     }
     

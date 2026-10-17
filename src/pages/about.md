@@ -24,16 +24,17 @@ title: "About"
 ### 言語・フレームワーク
 
 - Node.js / TypeScript
-- React / Vue
+- Vue3 / React
 - C# （いちばんすき）
+- OpenGL3 / GLSL（ちょっとだけ）
 - Ruby on Rails （実務経験あり）
 - PHP Laravel （実務経験ちょっとあり）
-
+<!-- TODO:↓これ掲げててもなぁと思って抜いてるけど、入れてても別に良いような気もしてて悩む
 ### Minecraft サーバー開発・運営
 
 - マイクラサーバーの運営実績（2年ほど）
 - Minecraft サーバーMOD「Spigot」のAPIを使ったプラグインの開発
-- 逆にリソパやデータパック、コマンド、統合版のアドオンとかは全くダメです
+- 逆にリソパやデータパック、コマンド、統合版のアドオンとかは全くダメです -->
 
 ## 趣味
 
@@ -43,10 +44,13 @@ title: "About"
 
 逆にじっくり戦略を立てる系や、ターン制のゲームは苦手です。
 
+- **NTE: Neverness to Everness**
+    - [海老瀬 瑠愛みたいな顔した女](https://dic.pixiv.net/a/%E3%83%8A%E3%83%8A%E3%83%AA%E3%83%BB%E3%82%B3%E3%83%AA%E3%83%B3%E3%82%B9)がいるという理由で始めた中華ソシャゲ
+    - フレンドになりましょう UID: 215261949102
 - **テトリス**
     - [tetr.io](https://ch.tetr.io/u/ebiselutica) S+ランクくらい
     - TETRIS 99 通常ルーム, VIPルームでテト1経験あり
-    - #tgm_series ちょっとしかできない。いずれもGM未到達
+    - #tgm_series TGM3でm7くらいの実力。ちょっとしかできない。いずれもGM未到達
     - Tetris Effect: Connected すき
 - **モンハン**
     - ライズから始めました
@@ -56,11 +60,15 @@ title: "About"
     - DARTSLIVE 3 でよく遊んでます
     - DARTSLIVE HOME設置してます
     - よく投げてるけど全然上手くなりません（レート2.5くらい）
+- **麻雀**
+    - 雀魂。雀士底辺です、いじめないで
+    - リアル麻雀は未経験
 - **UNDERTALE**
     - 全ルートクリア済み
 - **DELTARUNE**
-    - Chapter 4までクリア済み
-    - 5はよ
+    - Chapter 5までクリア済み
+    - 6はよ
+    - ＊前進。
 - **Among Us**
     - 友だちと予定が合えばやってます
     - 推理もコロシも下手
@@ -74,13 +82,17 @@ title: "About"
 
 ### 音楽制作
 
-2011年くらいから作り続けています。最近使用しているDAWは、Studio One Pro 7。
+2011年くらいから作り続けています。最近使用しているDAWは、Fender Studio Pro 8。
+
+愛用ヘッドホンはATH-M20x。
 
 昔ながらのゲーム音楽が好きで、そういった雰囲気を大切に作っています。それゆえにレトロなSoundFontなどをよく使う……。
 
 ### お絵描き
 
-Clip Studio Paint Proで描いています。最近初めたばかりなので、まだまだ下手です
+イラスト、Clip Studio Paint Proで描いています。最近初めたばかりなので、まだまだ下手です
+
+ドット絵、Asepriteで描いてます。こっちが本業。
 
 ### お笑い鑑賞
 

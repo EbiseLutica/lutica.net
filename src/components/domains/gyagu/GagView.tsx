@@ -33,8 +33,6 @@ export const GagView: React.FC = () => {
 		<>
 			<p>現在のギャグ数：{gagList.length}個</p>
 			<ul>
-				<li>
-						<Gag url="https://example.com" text="a" id="1" /></li>
 				{gagList.map(g => (
 					<li key={g.id}>
 						<Gag {...g} />

@@ -8,7 +8,7 @@ export const urusaiLinks: UrusaiLink[] = [{
 	href: 'https://midra.me',
 }, {
 	name: 'はやおのぺーじ',
-	href: 'https://hayao.fascode.net/#Gyagu',
+	href: 'https://www.hayao0819.com/gyagu/',
 }, {
 	name: 'サンセットのウェブサイト',
 	href: 'https://sunset0916.net/gyagu/',

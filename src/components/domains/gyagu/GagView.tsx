@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from 'react';
 
-const Gag: React.FC<{text: string | [string, string]}> = ({text}) => {
-	if (typeof text === 'string') {
-		return text;
-	}
+type GagRecord = {
+	id: string;
+	text: string;
+	summary?: string | null;
+	url?: string | null;
+};
 
-	return (
-		<details>
-			<summary>{text[0]}</summary>
-			{text[1]}
+const Gag: React.FC<GagRecord> = ({id, text, summary, url}) => {
+	const inner = summary ? (
+		<details id={id} className="gyagu--details">
+			<summary>{summary}</summary>
+			{text}
 		</details>
-	);
+	) : text;
+
+	return url ? <a className="gyagu--link" href={url} target="_blank" rel="noopener noreferrer">{inner}</a> : inner;
 };
 
 export const GagView: React.FC = () => {
-	const [gagList, setGagList] = useState<(string | [string, string])[]>([]);
+	const [gagList, setGagList] = useState<GagRecord[]>([]);
 
 	useEffect(() => {
 		fetch('https://urusai.lutic.at').then(d => d.json()).then(setGagList);
@@ -28,9 +33,11 @@ export const GagView: React.FC = () => {
 		<>
 			<p>現在のギャグ数：{gagList.length}個</p>
 			<ul>
+				<li>
+						<Gag url="https://example.com" text="a" id="1" /></li>
 				{gagList.map(g => (
-					<li key={typeof g === 'string' ? g : g[0] + g[1]}>
-						<Gag text={g} />
+					<li key={g.id}>
+						<Gag {...g} />
 					</li>
 				))}
 			</ul>

@@ -1,5 +1,6 @@
 html {
 	&[data-theme="light"] {
+	    color-scheme: light;
 		display: block;
 		--foreground: #393535;
 		--background: #FFE5E4;
@@ -18,6 +19,7 @@ html {
 	};
 	
 	&[data-theme="dark"] {
+	    color-scheme: dark;
 		display: block;
 		/* NOTE: http://colormind.io/bootstrap/ で作った */
 		--foreground: #c9baba;

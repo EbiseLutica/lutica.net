@@ -1,0 +1,77 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+}
+
+.select {
+    appearance: base-select;
+    border: none;
+    background: var(--menubar-link-bg);
+    border-radius: 12px;
+    height: 32px;
+    padding: 0 12px;
+    color: var(--foreground);
+    cursor: pointer;
+}
+
+.select::picker(select) {
+    appearance: base-select;
+    background: var(--content-bg);
+    color: var(--foreground);
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.select > option {
+    padding: 8px 12px;
+}
+
+.card {
+    padding: 8px 12px;
+    background: var(--content-bg);
+    border-radius: 12px;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.source {
+    color: var(--dimmed);
+}
+
+.openGyaguButton {
+    appearance: none;
+    border: none;
+    display: inline;
+    background: transparent;
+    color: var(--dimmed);
+    cursor: pointer;
+    user-select: none;
+    text-decoration: underline;
+}
+
+.likeButton {
+    appearance: none;
+    border: none;
+    background: var(--menubar-link-bg);
+    border-radius: 12px;
+    height: 32px;
+    padding: 0 12px;
+    color: var(--foreground);
+    cursor: pointer;
+}
+
+.likeButton:hover {
+    background: var(--menubar-link-bg-active);
+}

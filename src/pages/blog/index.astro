@@ -14,7 +14,7 @@ const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog', ({ data 
 const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<Layout title="ブログ">
+<Layout title="ブログ" feed={{ title: 'るちーかの長いノート', href: '/blog/rss.xml' }}>
     <Content>
         <header>
             <h1>るちーかの長いノート</h1>
@@ -24,6 +24,7 @@ const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTim
             <p>
                 暇な方、るちーかのファン、あるいはそれら以外全ての方、どうぞご覧ください。
             </p>
+            <p><a href="/blog/rss.xml">RSSフィード</a></p>
             {isDev ? <aside style="color: var(--dimmed)">（開発ビルドのため、下書き記事も表示しています）</aside> : null}
         </header>
         <div class="article-list">

@@ -9,6 +9,8 @@ export interface Props {
 	title?: string;
 	description?: string;
 	root?: boolean;
+	/** RSSフィードの自動検出用 */
+	feed?: { title: string; href: string };
 }
 
 const title = Astro.props.title ? `${Astro.props.title} | ${SITE_TITLE}` : SITE_TITLE;
@@ -31,6 +33,7 @@ const themeColor = '#651622';
 		<meta name="generator" content={Astro.generator} />
 		<link href="https://koruri.chillout.chat/koruri.css" rel="stylesheet">
 		<link href="https://unpkg.com/sanitize.css" rel="stylesheet"/>
+		{Astro.props.feed && <link rel="alternate" type="application/rss+xml" title={Astro.props.feed.title} href={Astro.props.feed.href} />}
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta name="msapplication-TileColor" content={themeColor} />

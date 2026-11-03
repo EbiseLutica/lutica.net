@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/mdx": "^4.0.3",
     "@astrojs/react": "^4.1.2",
+    "@astrojs/rss": "^4.0.19",
     "@iconify-json/bi": "^1.1.23",
     "@iconify-json/simple-icons": "^1.1.108",
     "@iconify-json/tabler": "^1.2.24",

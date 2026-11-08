@@ -57,8 +57,9 @@ import { GagView } from '../components/domains/gyagu/GagView';
 	margin: 0;
 	padding: 0;
 	border: none;
-	border-radius: none;
+	border-radius: 0;
 	background: none;
+	box-shadow: none;
 }
 </style>
 
@@ -67,86 +68,5 @@ import { GagView } from '../components/domains/gyagu/GagView';
 	width: 1em;
 	height: 1em;
 	display: inline-block;
-}
-
-.root {
-	display: flex;
-	position: relative;
-	align-items: center;
-	justify-content: center;
-	min-height: 100vh;
-	background-image: url('/bg-darker.jpg');
-	background-size: cover;
-	background-attachment: fixed;
-
-	.card {
-		position: relative;
-		width: 100%;
-		max-width: 720px;
-		padding: 16px;
-		margin: 16px;
-		background-color: var(--primaryDark);
-		text-align: center;
-		border-radius: 2px;
-
-		.inner {
-			padding: 16px;
-			border: 2px solid var(--warn);
-		}
-
-		.description {
-			opacity: 0.8;
-		}
-
-		.links {
-			display: flex;
-			gap: 8px;
-			justify-content: center;
-		}
-
-		.button {
-			padding: 4px 16px;
-			line-height: 1.5;
-			font-weight: bold;
-			color: var(--foreground);
-			border: 2px solid var(--foreground);
-			cursor: pointer;
-			text-decoration: none;
-			border-radius: 12px;
-
-			&.primary {
-				border-color: var(--primary);
-				background: 2px var(--primary);
-			}
-		}
-	}
-
-	.avatar-wrapper {
-		$size: 96px;
-		position: absolute;
-		left: calc(50% - ($size / 2));
-		top: -64px;
-		background-color: var(--primaryDark);
-		color: var(--background);
-		position: absolute;
-		border-radius: 999px;
-		padding: 8px;
-		width: $size;
-		height: $size;
-		border: 2px solid var(--warn);
-
-		img {
-			width: 100%;
-			border-radius: 999px;
-		}
-	}
-
-	.image-copyright {
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		margin: 16px;
-		opacity: 0.4;
-	}
 }
 </style>

@@ -5,10 +5,10 @@ const { className } = Astro.props;
 
 ---
 
-<button class={className} id="theme-toggler-button">
-    <Icon class="icon" data-theme="system" name="tabler:device-desktop-filled" />
-    <Icon class="icon" data-theme="light" name="tabler:sun-filled" />
-    <Icon class="icon" data-theme="dark" name="tabler:moon-filled" />
+<button class={className} id="theme-toggler-button" type="button" aria-label="テーマを切り替える">
+    <Icon class="icon" data-theme-icon="system" name="tabler:device-desktop-filled" />
+    <Icon class="icon" data-theme-icon="light" name="tabler:sun-filled" />
+    <Icon class="icon" data-theme-icon="dark" name="tabler:moon-filled" />
 </button>
 
 <style lang="scss">
@@ -24,9 +24,9 @@ const { className } = Astro.props;
     // 必要な変数
     const button = document.getElementById('theme-toggler-button');
     const icons = {
-        system: button.querySelector('.icon[data-theme="system"]'),
-        light: button.querySelector('.icon[data-theme="light"]'),
-        dark: button.querySelector('.icon[data-theme="dark"]'),
+        system: button.querySelector('.icon[data-theme-icon="system"]'),
+        light: button.querySelector('.icon[data-theme-icon="light"]'),
+        dark: button.querySelector('.icon[data-theme-icon="dark"]'),
     };
     const themes = ['system', 'light', 'dark'];
     const matchResult = window.matchMedia('(prefers-color-scheme: dark)');

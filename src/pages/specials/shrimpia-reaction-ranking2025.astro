@@ -39,7 +39,7 @@ const months = [1,2,3,4,5,6,7,8,9,10,11,12];
             </header>
 
 
-            <main class="_article-card">
+            <main class="lu-card lu-card--article">
                 <h2 id="annual">年間</h2>
                 <EmojiRanking date="2025" limit={50}/>
 
@@ -85,12 +85,12 @@ h2 {
     z-index: 999;
     padding: 0.75rem 1.5rem;
     background: var(--primary);
-    color: white;
+    color: var(--on-primary);
     border: none;
-    border-radius: 2rem;
-    font-size: 0.9rem;
-    font-weight: bold;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: var(--radius-full);
+    font-size: var(--text-ui);
+    font-weight: 700;
+    box-shadow: var(--shadow-md);
     cursor: pointer;
 
     &:hover {
@@ -150,7 +150,7 @@ h2 {
 
                 &:hover {
                     background-color: var(--primary);
-                    color: white;
+                    color: var(--on-primary);
                 }
             }
         }
@@ -178,9 +178,9 @@ h2 {
         max-width: 80vw;
         height: 100vh;
         max-height: 100vh;
-        background: var(--background);
-        border-left: 1px solid var(--border, #e0e0e0);
-        padding: 1.5rem;
+        background: var(--panel-raised);
+        box-shadow: var(--shadow-lg);
+        padding: var(--space-6);
         z-index: 1000;
         transform: translateX(100%);
         transition: transform 0.3s ease;

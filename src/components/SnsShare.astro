@@ -47,7 +47,7 @@ const shares = [{
                 <Icon name={share.icon} />
             </a>
         ))}
-        <button type="button" class="_sns-button" style="--brand-bg: var(--primary); --brand-fg: white" id="blog-web-share-api-button">
+        <button type="button" class="_sns-button" style="--brand-bg: var(--primary); --brand-fg: var(--on-primary)" id="blog-web-share-api-button">
             <Icon name="tabler:share" />
         </button>
     </div>
@@ -75,12 +75,12 @@ const shares = [{
 
 <style lang="scss">
     .share-buttons {
-        margin-bottom: 2rem;
+        margin-bottom: var(--space-8);
 
         > h2 {
             border: none;
             margin-top: 0;
-            font-size: 1.2rem;
+            font-size: var(--text-h4);
             &::before {
                 display: none;
             }

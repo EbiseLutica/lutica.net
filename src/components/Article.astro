@@ -7,16 +7,7 @@ export interface Props {
 const { heading, id } = Astro.props;
 ---
 
-<article class="root" id={id}>
+<article class="lu-container lu-prose" id={id}>
     {heading && <h2>{heading}</h2>}
     <slot/>
 </article>
-
-<style>
-	.root {
-        padding: 0 16px;
-        max-width: 960px;
-        width: 100%;
-        margin: 0 auto;
-    }
-</style>

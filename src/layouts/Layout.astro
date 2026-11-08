@@ -2,6 +2,8 @@
 import Navbar from '../components/Navbar.astro';
 import 'photoswipe/style.css';
 import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css';
+import '../styles/lutica-ds/tokens.css';
+import '../styles/lutica-ds/bundle.css';
 import '../styles/style.scss';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../scripts/const';
 
@@ -31,7 +33,6 @@ const themeColor = '#651622';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
-		<link href="https://koruri.chillout.chat/koruri.css" rel="stylesheet">
 		<link href="https://unpkg.com/sanitize.css" rel="stylesheet"/>
 		{Astro.props.feed && <link rel="alternate" type="application/rss+xml" title={Astro.props.feed.title} href={Astro.props.feed.href} />}
 		<title>{title}</title>
@@ -50,7 +51,7 @@ const themeColor = '#651622';
 			<slot />
 		</main>
 		<footer>
-			<span>(C)2023-{new Date().getFullYear()} Ebise Lutica all rights reserved.</span>
+			<span class="lu-text-dimmed lu-text-small">(C)2023-{new Date().getFullYear()} Ebise Lutica all rights reserved.</span>
 		</footer>
 	</body>
 </html>
@@ -74,7 +75,7 @@ const themeColor = '#651622';
 	}
 
 	main {
-		padding-top: 64px;
+		padding-top: calc(var(--size-navbar) + var(--space-6) + var(--space-8));
 		min-height: calc(100vh - 128px);
 	}
 
@@ -83,9 +84,5 @@ const themeColor = '#651622';
 		align-items: center;
 		justify-content: center;
 		height: 128px;
-		
-		> span {
-			opacity: 0.6;
-		}
 	}
 </style>

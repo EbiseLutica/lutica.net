@@ -18,16 +18,16 @@ const shareTitle = `${frontmatter.title} - るちーかの長いノート`;
         <article class="blog">
             <header class="hero">
                 <h1>{frontmatter.title}</h1>
-                <aside style="color: var(--dimmed)">
+                <aside class="lu-text-dimmed">
                     <Icon name="tabler:calendar-event"/> <time datetime={isoString}>{dateString}</time>
                 </aside>
             </header>
-            <article class="_article-card">
+            <article class="lu-card lu-card--article lu-prose">
                 <slot />
             </article>
             <footer class="article-footer">
                 <SnsShare title={shareTitle} />
-                <a class="back-button" href="/blog">← ブログ一覧に戻る</a>
+                <a class="lu-button" href="/blog">← ブログ一覧に戻る</a>
             </footer>
         </article>
     </Content>
@@ -36,40 +36,18 @@ const shareTitle = `${frontmatter.title} - るちーかの長いノート`;
 <style lang="scss">
     .blog {
         header.hero {
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-4);
+            padding-bottom: var(--space-4);
             text-align: center;
-            padding-bottom: 1rem;
-        }
 
-        img {
-            max-width: 100%;
-        }
-
-        hr {
-            margin: 3rem 0;
-            border: none;
-            border-bottom: 1px solid var(--dimmed);
+            h1 {
+                margin: 0;
+            }
         }
 
         .article-footer {
-            margin-top: 3rem;
+            margin-top: var(--space-12);
             text-align: center;
-        }
-
-        .back-button {
-            display: inline-block;
-            color: var(--foreground);
-            background: var(--menubar-link-bg);
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            transition: background-color 0.1s ease, color 0.1s ease;
-			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-            &:hover {
-                background-color: var(--primary);
-                color: white;
-            }
         }
     }
 </style>

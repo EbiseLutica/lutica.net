@@ -25,10 +25,10 @@ const Gag: React.FC<GagRecord & {like: (id: number) => void}> = ({id, text, summ
 	) : <div>{text}</div>;
 
 	return (
-		<div className={styles.card}>
+		<div className="lu-card lu-p-3">
 			{inner}
 			<div className={styles.toolbar}>
-				<button className={styles.likeButton} onClick={() => like(id)}>❤️ {likes}</button>
+				<button className="lu-button lu-button--sm" onClick={() => like(id)}>❤️ {likes}</button>
 				{url && <a className={styles.source} href={url} target="_blank" rel="noopener noreferrer">出典…</a>}
 			</div>
 		</div>
@@ -68,9 +68,11 @@ export const GagView: React.FC = () => {
 		<div>
 			<header className={styles.header}>
 				<div>{gagList.length > 0 ? `現在のギャグ数: ${gagList.length}個` : 'ギャグを取得中…'}</div>
-				<select className={styles.select} value={order} onChange={e => setOrder(e.target.value as GagOrder)}>
-					{(Object.keys(GAG_ORDERS) as GagOrder[]).map(o => <option key={o} value={o}>{GAG_ORDERS[o]}</option>)}
-				</select>
+				<label className={`lu-select ${styles.select}`}>
+					<select value={order} aria-label="並び順" onChange={e => setOrder(e.target.value as GagOrder)}>
+						{(Object.keys(GAG_ORDERS) as GagOrder[]).map(o => <option key={o} value={o}>{GAG_ORDERS[o]}</option>)}
+					</select>
+				</label>
 			</header>
 			{gagList.length > 0 && (
 				<div className={styles.list}>

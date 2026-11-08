@@ -16,7 +16,7 @@ const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTim
 
 <Layout title="ブログ">
     <Content>
-        <header>
+        <header class="lu-prose">
             <h1>るちーかの長いノート</h1>
             <p>
                 普段Misskeyを使いすぎてブログというものを書かなすぎる（アドカレ置き場になっている）んですが、オタクというのは時折長く語りたくなるものなので……そんなものを置く場所です。
@@ -24,9 +24,9 @@ const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTim
             <p>
                 暇な方、るちーかのファン、あるいはそれら以外全ての方、どうぞご覧ください。
             </p>
-            {isDev ? <aside style="color: var(--dimmed)">（開発ビルドのため、下書き記事も表示しています）</aside> : null}
+            {isDev ? <aside class="lu-text-dimmed">（開発ビルドのため、下書き記事も表示しています）</aside> : null}
         </header>
-        <div class="article-list">
+        <div class="lu-stack lu-stack--gap-4">
             {posts.map(p => <BlogTitle path={`/blog/${p.slug}`} frontmatter={p.data} />)}
         </div>
     </Content>
@@ -34,12 +34,6 @@ const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTim
 
 <style lang="scss">
     header {
-        margin-bottom: 2rem;
-    }
-
-    .article-list {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
+        margin-bottom: var(--space-8);
     }
 </style>

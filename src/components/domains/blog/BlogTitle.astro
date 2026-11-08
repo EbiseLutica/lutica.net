@@ -14,38 +14,23 @@ const isoString = isNaN((frontmatter.date as Date).getTime()) ? '' : (frontmatte
 
 ---
 
-<a href={path} class="root">
-    <article class="article">
+<a href={path} class="lu-card lu-card--link lu-p-4">
+    <article>
         <h2 class="title">{frontmatter.title}</h2>
-        <aside class="date">
+        <aside class="lu-text-dimmed lu-text-small">
             <Icon name="tabler:calendar-event" /> <time datetime={isoString}>{dateString}</time>
-            {frontmatter.draft ? ' (下書き)' : ''}
+            {frontmatter.draft ? <span class="lu-chip lu-chip--dimmed lu-ms-1">下書き</span> : null}
         </aside>
         <p>{frontmatter.description}</p>
     </article>
 </a>
 
 <style lang="scss">
-    .root {
-        color: inherit;
-        text-decoration: none;
-    }
-
-    .article {
-        background-color: var(--content-bg);
-        padding: 16px;
-        border-radius: 12px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .date {
-        color: var(--dimmed);
-        font-size: 0.9em;
-        padding-left: 10px;
-    }
-
     h2.title {
         margin: 0;
-        border-bottom: none;
+    }
+
+    p {
+        margin: var(--space-2) 0 0;
     }
 </style>

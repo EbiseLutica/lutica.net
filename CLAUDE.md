@@ -60,8 +60,16 @@ The site implements a 3-state theme system (system/light/dark):
 - Theme preference stored in `localStorage` as `'theme'`
 - Inline script in [Layout.astro](src/layouts/Layout.astro) prevents FOUC by setting `data-theme` attribute before page render
 - [ThemeButton.astro](src/components/ThemeButton.astro) cycles through themes and updates localStorage
-- CSS variables in [style.scss](src/styles/style.scss) define colors for each theme via `[data-theme="light"]` and `[data-theme="dark"]` attributes
+- CSS variables in [lutica-ds/tokens.css](src/styles/lutica-ds/tokens.css) define colors for each theme via `[data-theme="light"]` and `[data-theme="dark"]` attributes
 - System theme respects `prefers-color-scheme` media query
+
+### Design System
+
+The site uses the Lutica Design System (https://claude.ai/artifact/DwArjsh98Mu3CJDUkhzZuu), vendored in `src/styles/lutica-ds/`:
+
+- `tokens.css` is generated from the system's `tokens.json`; `bundle.css` (the `lu-*` component classes) and `fonts/` are copied as-is. Do not hand-edit them
+- [style.scss](src/styles/style.scss) only holds what the system doesn't cover (`figure`, `details`, `_sns-button`, etc.)
+- Article content goes inside `.lu-prose` ([Article.astro](src/components/Article.astro) and [Blog.astro](src/layouts/Blog.astro) already apply it); UI does not
 
 ### Content Management
 
@@ -79,15 +87,15 @@ Blog posts use Astro Content Collections:
 ### Special Features
 
 - **PhotoSwipe Integration**: Base layout initializes PhotoSwipe lightbox for all `.item` elements, used for image galleries
-- **External CSS**: Uses Koruri font from external CDN and sanitize.css for CSS reset
+- **External CSS**: Uses sanitize.css from a CDN for CSS reset. The Koruri font is self-hosted through the design system
 - **Japanese Language**: All content and UI text is in Japanese
 - **Share Buttons**: Blog posts have share buttons configured for Japanese social media (Misskey instance at mk.shrimpia.network)
 - **Dev Mode Badge**: Navbar shows "DEV MODE" badge in development environment
 
 ### Styling Conventions
 
-- Global SCSS classes prefixed with `_` (e.g., `._card`, `._article-card`, `._vstack`, `._hstack`)
-- CSS variables for theming (e.g., `var(--foreground)`, `var(--background)`, `var(--primary)`)
+- Prefer the design system's `lu-*` classes (e.g., `lu-card`, `lu-button`, `lu-stack`, `lu-container`). Site-specific global classes are prefixed with `_` (e.g., `._sns-button`, `._emoji`)
+- CSS variables for theming and sizes (e.g., `var(--foreground)`, `var(--panel)`, `var(--primary)`, `var(--space-4)`); never hard-code colors
 - Scoped styles using `<style lang="scss">` in Astro components
 - Global styles using `<style lang="scss" is:global>` when needed
 

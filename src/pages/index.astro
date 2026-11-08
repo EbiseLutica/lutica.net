@@ -5,7 +5,7 @@ import { Icon } from 'astro-icon/components';
 
 <Layout>
 	<main class="root">
-		<div class="card">
+		<div class="lu-card lu-p-4 profile">
 			<h1>るちーか</h1>
 			<p class="description">ものづくりとゲームが好きです。</p>
 			<div class="_sns-buttons">
@@ -28,29 +28,29 @@ import { Icon } from 'astro-icon/components';
 		</div>
 		
 		<div class="top-menu">
-			<a href="/about" class="menu-item">
+			<a href="/about" class="lu-card lu-card--link lu-p-4 menu-item">
 				<h2 class="title">About</h2>
 				<p>もっとくわしい　自己紹介</p>
 			</a>
-			<a href="/blog" class="menu-item">
+			<a href="/blog" class="lu-card lu-card--link lu-p-4 menu-item">
 				<h2 class="title">Blog</h2>
 				<p>ちょっと長い　話をつらつら</p>
 			</a>
-			<a href="/works" class="menu-item">
+			<a href="/works" class="lu-card lu-card--link lu-p-4 menu-item">
 				<h2 class="title">Works</h2>
 				<p>いろんなモノ　つくってます</p>
 			</a>
-			<div class="menu-item disabled">
+			<div class="lu-card lu-p-4 menu-item disabled">
 				<h2 class="title">Characters</h2>
 				<p>アバターと　うちの子</p>
 				<aside>準備中...</aside>
 			</div>
-			<div class="menu-item disabled">
+			<div class="lu-card lu-p-4 menu-item disabled">
 				<h2 class="title">Gallery</h2>
 				<p>描いた＆描いていただいた　イラスト集</p>
 				<aside>準備中...</aside>
 			</div>
-			<a href="/gyagu" class="menu-item">
+			<a href="/gyagu" class="lu-card lu-card--link lu-p-4 menu-item">
 				<h2 class="title">Gyagu*</h2>
 				<p>このサイト　うるさいとｗ</p>
 				<aside>
@@ -70,77 +70,54 @@ $page-max-width: 500px;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: 0 16px;
+	padding: 0 var(--space-4);
 
-	.card {
-		position: relative;
+	.profile {
 		width: 100%;
 		max-width: $page-max-width;
-		padding: 16px;
-		background-color: var(--content-bg);
 		text-align: center;
-		border-radius: 16px;
-		color: var(--primary);
+
 		h1 {
-			margin-top: 16px;
-			color: inherit;
-			line-height: 1.2;
+			margin: var(--space-4) 0 0;
+			color: var(--primary);
 		}
 
 		.description {
-			margin-bottom: 20px;
+			margin: var(--space-2) 0 var(--space-4);
 		}
 	}
 
 	.top-menu {
 		display: flex;
 		flex-direction: column;
-		gap: 12px;
+		gap: var(--space-3);
 		width: 100%;
 		max-width: $page-max-width;
-		margin: 40px 16px 16px 16px;
+		margin: var(--space-8) var(--space-4) var(--space-4);
 
 		.menu-item {
-			display: block;
-			padding: 16px;
-			border-radius: 8px;
-			border: none;
-			background-color: var(--content-bg);
-			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-			color: var(--foreground);
-			text-decoration: none;
-			transition: background-color 0.1s ease;
-
-			h2 {
-				margin: 0;
-				border-bottom: none;
-				font-size: 1.2rem;
-				font-weight: normal;
-				border-left: 2px solid var(--primary);
-				padding-left: 8px;
-				line-height: 1.5;
-				&::before { display: none; }
-			}
-
-			p {
-				margin: 12px 0 0 8px;
-				font-size: 0.9rem;
-				line-height: 1.2;
-			}
-
 			&.disabled {
 				opacity: 0.5;
 				pointer-events: none;
 			}
 
-			&:not(.disabled):hover {
-				background-color: var(--menubar-link-bg-active);
+			h2 {
+				margin: 0;
+				padding-left: var(--space-2);
+				border-left: 2px solid var(--brand);
+				font-size: var(--text-h4);
 			}
-		}
-		aside {
-			margin: 12px 0 0 8px;
-			font-size: 0.8rem;
-			opacity: 0.6;
+
+			p {
+				margin: var(--space-2) 0 0 var(--space-2);
+				font-size: var(--text-ui);
+			}
+
+			aside {
+				margin: var(--space-2) 0 0 var(--space-2);
+				color: var(--dimmed);
+				font-size: var(--text-small);
+			}
 		}
 	}
 }

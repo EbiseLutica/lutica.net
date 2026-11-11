@@ -11,12 +11,17 @@ export interface Props {
 	title?: string;
 	description?: string;
 	root?: boolean;
+	/** og:type。記事ページは 'article' を指定する */
+	type?: 'website' | 'article';
 	/** RSSフィードの自動検出用 */
 	feed?: { title: string; href: string };
 }
 
 const title = Astro.props.title ? `${Astro.props.title} | ${SITE_TITLE}` : SITE_TITLE;
 const description = Astro.props.description ?? SITE_DESCRIPTION;
+const ogType = Astro.props.type ?? 'website';
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const ogImage = new URL('/favicon.png', Astro.site ?? Astro.url).href;
 const themeColor = '#651622';
 ---
 
@@ -39,11 +44,13 @@ const themeColor = '#651622';
 		<meta name="description" content={description} />
 		<meta name="msapplication-TileColor" content={themeColor} />
 		<meta name="theme-color" content={themeColor} />
-		<meta property="og:type" content={title ? 'article' : 'website'} />
+		<meta property="og:type" content={ogType} />
+			<meta property="og:url" content={canonicalUrl.href} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:site_name" content={SITE_TITLE} />
-		<meta property="og:image" content="/favicon.png" />
+		<meta property="og:image" content={ogImage} />
+			<meta name="twitter:card" content="summary" />
 	</head>
 	<body id="root">
 		<Navbar />

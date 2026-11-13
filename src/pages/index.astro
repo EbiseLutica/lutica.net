@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
+import lutica from '../assets/lutica_chibi.png';
 ---
 
 <Layout>
@@ -8,6 +9,7 @@ import { Icon } from 'astro-icon/components';
 		<div class="lu-card lu-p-4 profile">
 			<h1>るちーか</h1>
 			<p class="description">ものづくりとゲームが好きです。</p>
+			<img class="lutica-chibi-floating" src={lutica.src} alt="lutica" />
 			<div class="_sns-buttons">
 				<a href="https://mk.lutic.at/@lutica" style="--brand-bg: #A1CA03; --brand-fg: white" class="_sns-button" target="_blank" rel="noopener noreferrer">
 					<Icon name="simple-icons:misskey" />
@@ -61,8 +63,39 @@ import { Icon } from 'astro-icon/components';
 	</main>
 </Layout>
 
+<script>
+	// クリックで squash & stretch する。CSS の登場アニメを再実行させないよう Web Animations API で重ねる
+	const chibi = document.querySelector<HTMLElement>('.lutica-chibi-floating');
+	const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+	chibi?.addEventListener('click', () => {
+		if (reduceMotion.matches) return;
+		chibi.animate(
+			[
+				{ transform: 'scale(1, 1)' },
+				{ transform: 'scale(1.15, 0.85)', offset: 0.2 },
+				{ transform: 'scale(0.92, 1.08)', offset: 0.45 },
+				{ transform: 'scale(1.04, 0.96)', offset: 0.7 },
+				{ transform: 'scale(1, 1)' },
+			],
+			{ duration: 500, easing: 'ease-out' },
+		);
+	});
+</script>
+
 <style lang="scss">
 $page-max-width: 500px;
+
+@keyframes chibi-pop {
+	from {
+		opacity: 0;
+		transform: translateY(24px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
 
 .root {
 	display: flex;
@@ -71,11 +104,13 @@ $page-max-width: 500px;
 	align-items: center;
 	justify-content: center;
 	padding: 0 var(--space-4);
+	overflow-x: clip;
 
 	.profile {
 		width: 100%;
 		max-width: $page-max-width;
 		text-align: center;
+		position: relative;
 
 		h1 {
 			margin: var(--space-4) 0 0;
@@ -84,6 +119,26 @@ $page-max-width: 500px;
 
 		.description {
 			margin: var(--space-2) 0 var(--space-4);
+		}
+
+		.lutica-chibi-floating {
+			position: absolute;
+			right: -60px;
+			top: -128px;;
+			width: 249px;
+			height: 191px;
+			filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+			animation: chibi-pop 0.6s cubic-bezier(0, 0.82, 0.82, 1.29) both;
+			cursor: pointer;
+			transform-origin: 50% 100%;
+
+			@media (prefers-reduced-motion: reduce) {
+				animation: none;
+			}
+
+			:global(html[data-theme="dark"]) & {
+				filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)) brightness(0.6) saturate(1.2);
+			}
 		}
 	}
 

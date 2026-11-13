@@ -1,0 +1,9 @@
+{
+  "pasteImage.path": "${projectRoot}/public/blog/${currentFileNameWithoutExt}",
+  "pasteImage.basePath": "${projectRoot}/public",
+  "pasteImage.prefix": "/",
+  "pasteImage.forceUnixStyleSeparator": true,
+  "pasteImage.defaultName": "image",
+  "pasteImage.nameSuffix": "",
+  "pasteImage.insertPattern": "${imageSyntaxPrefix}${imageFilePath}${imageSyntaxSuffix}"
+}

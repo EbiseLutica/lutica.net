@@ -13,7 +13,7 @@ const isoString = isNaN((frontmatter.date as Date).getTime()) ? '' : (frontmatte
 const shareTitle = `${frontmatter.title} - るちーかの長いノート`;
 ---
 
-<Layout title={frontmatter.title}>
+<Layout title={frontmatter.title} description={frontmatter.description} type="article">
     <Content>
         <article class="blog">
             <header class="hero">

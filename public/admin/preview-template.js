@@ -31,6 +31,23 @@
       return function () { clearTimeout(timer); };
     }, [json]);
 
+    // 編集ペインのスクロール量を比率に換算し、プレビューの同じ比率位置へ合わせる
+    React.useEffect(function () {
+      function onScroll(e) {
+        var src = e.target;
+        var frame = ref.current;
+        if (!frame || !frame.contentWindow || !(src instanceof Element)) return;
+        if (!src.querySelector('[contenteditable="true"], textarea')) return;
+        var max = src.scrollHeight - src.clientHeight;
+        if (max <= 0) return;
+        var win = frame.contentWindow;
+        var previewMax = frame.contentDocument.documentElement.scrollHeight - win.innerHeight;
+        win.scrollTo(0, (src.scrollTop / max) * previewMax);
+      }
+      document.addEventListener('scroll', onScroll, true);
+      return function () { document.removeEventListener('scroll', onScroll, true); };
+    }, []);
+
     return h('iframe', {
       ref: ref,
       style: { width: '100%', height: '100%', minHeight: '80vh', border: 0 },

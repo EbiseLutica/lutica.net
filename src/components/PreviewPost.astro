@@ -1,0 +1,19 @@
+---
+import Blog from '../layouts/Blog.astro';
+
+type Props = {
+    frontmatter: {
+        title: string;
+        description?: string;
+        date: Date;
+        draft: boolean;
+    };
+    html: string;
+};
+
+const { frontmatter, html } = Astro.props;
+---
+
+<Blog frontmatter={frontmatter}>
+    <Fragment set:html={html} />
+</Blog>

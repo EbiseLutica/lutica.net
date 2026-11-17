@@ -1,8 +1,13 @@
+import type { APIRoute } from 'astro';
+import { env } from 'cloudflare:workers';
+
+export const prerender = false;
+
 /**
  * Decap CMS の GitHub 認証コールバック (/callback)。
  * state を検証し、code をアクセストークンに交換して、opener (CMS) へ postMessage で渡す。
  */
-export const onRequestGet = async ({ request, env }) => {
+export const GET: APIRoute = async ({ request }) => {
   if (!env.GITHUB_OAUTH_ID || !env.GITHUB_OAUTH_SECRET) {
     return new Response(
       `OAuth 設定不足: GITHUB_OAUTH_ID=${!!env.GITHUB_OAUTH_ID}, GITHUB_OAUTH_SECRET=${!!env.GITHUB_OAUTH_SECRET}`,
@@ -30,7 +35,7 @@ export const onRequestGet = async ({ request, env }) => {
       redirect_uri: `${origin}/callback`,
     }),
   });
-  const tokenJson = await tokenRes.json();
+  const tokenJson = (await tokenRes.json()) as { access_token?: string };
   if (!tokenJson.access_token) {
     return new Response('Failed to obtain access token', { status: 502 });
   }
@@ -48,11 +53,10 @@ export const onRequestGet = async ({ request, env }) => {
 
 /**
  * Cookie ヘッダから指定名の値を取り出す。
- * @param {string | null} header Cookie ヘッダ値
- * @param {string} name Cookie 名
- * @returns {string | null}
+ * @param header Cookie ヘッダ値
+ * @param name Cookie 名
  */
-const readCookie = (header, name) => {
+const readCookie = (header: string | null, name: string): string | null => {
   if (!header) return null;
   for (const part of header.split(';')) {
     const [key, ...rest] = part.trim().split('=');
@@ -65,11 +69,10 @@ const readCookie = (header, name) => {
  * 認証結果を opener に渡す HTML を生成する。
  * CMS からの handshake (authorizing:github) を受けてからトークンを送る。
  * 送信先 origin はサイト自身の origin に固定し、受信元も同一 origin のみ許可する。
- * @param {string} origin サイトの origin
- * @param {string} message 送信するメッセージ
- * @returns {string}
+ * @param origin サイトの origin
+ * @param message 送信するメッセージ
  */
-const callbackHtml = (origin, message) => {
+const callbackHtml = (origin: string, message: string): string => {
   const safeOrigin = JSON.stringify(origin).replace(/</g, '\\u003c');
   const safeMessage = JSON.stringify(message).replace(/</g, '\\u003c');
   return `<!doctype html>

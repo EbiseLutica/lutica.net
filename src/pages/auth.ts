@@ -1,8 +1,13 @@
+import type { APIRoute } from 'astro';
+import { env } from 'cloudflare:workers';
+
+export const prerender = false;
+
 /**
  * Decap CMS の GitHub 認証開始エンドポイント (/auth)。
  * state を生成して Cookie に保存し、GitHub の認可画面へリダイレクトする。
  */
-export const onRequestGet = ({ request, env }) => {
+export const GET: APIRoute = ({ request }) => {
   if (!env.GITHUB_OAUTH_ID || !env.GITHUB_OAUTH_SECRET) {
     return new Response(
       `OAuth 設定不足: GITHUB_OAUTH_ID=${!!env.GITHUB_OAUTH_ID}, GITHUB_OAUTH_SECRET=${!!env.GITHUB_OAUTH_SECRET}`,

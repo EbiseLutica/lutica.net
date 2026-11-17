@@ -10,10 +10,6 @@ html {
 	}
 }
 
-img {
-	width: 100%;
-}
-
 iframe {
 	width: 100%;
 }
@@ -24,10 +20,6 @@ figure {
 	max-width: fit-content;
 	border: 2px dashed var(--brand);
 	padding: var(--space-4) var(--space-6);
-
-	img {
-		width: 100%;
-	}
 
 	.item img {
 		cursor: zoom-in;

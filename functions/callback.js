@@ -3,6 +3,13 @@
  * state を検証し、code をアクセストークンに交換して、opener (CMS) へ postMessage で渡す。
  */
 export const onRequestGet = async ({ request, env }) => {
+  if (!env.GITHUB_OAUTH_ID || !env.GITHUB_OAUTH_SECRET) {
+    return new Response(
+      `OAuth 設定不足: GITHUB_OAUTH_ID=${!!env.GITHUB_OAUTH_ID}, GITHUB_OAUTH_SECRET=${!!env.GITHUB_OAUTH_SECRET}`,
+      { status: 500 },
+    );
+  }
+
   const url = new URL(request.url);
   const { origin } = url;
   const code = url.searchParams.get('code');

@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: "EbiseLutica/lutica.net"
+  branch: master
+  base_url: https://lutic.at
+  auth_endpoint: auth
+
+media_folder: "public/blog"
+public_folder: "/blog"
+
+collections:
+  - name: blog
+    label: ブログ
+    folder: "src/content/blog"
+    create: true
+    extension: md
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "タイトル", name: "title", widget: "string" }
+      - { label: "説明", name: "description", widget: "text", required: false }
+      - { label: "公開日", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "下書き", name: "draft", widget: "boolean", default: false }
+      - { label: "本文", name: "body", widget: "markdown" }

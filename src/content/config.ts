@@ -8,6 +8,7 @@ const blog = defineCollection({
     description: z.string().optional(),
     date: z.union([z.string(), z.date()]).transform((v) => new Date(v)),
     visibility: z.enum(VISIBILITIES).default('public'),
+    tags: z.array(z.string()).optional().default([]),
   }),
 });
 

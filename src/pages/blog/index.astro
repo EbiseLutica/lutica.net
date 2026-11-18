@@ -1,18 +1,13 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import { getCollection } from 'astro:content';
 import Content from '../../components/Content.astro';
 import BlogTitle from '../../components/domains/blog/BlogTitle.astro';
 import Layout from '../../layouts/Layout.astro';
-import { isListed } from '../../scripts/blog';
+import { countTags, getListedPosts } from '../../scripts/blog-posts';
 
 const isDev = import.meta.env.DEV;
 
-const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog', ({ data }) => {
-    return isDev || isListed(data);
-});
-
-const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const posts = await getListedPosts();
+const tags = countTags(posts);
 ---
 
 <Layout title="ブログ" feed={{ title: 'るちーかの長いノート', href: '/blog/rss.xml' }}>
@@ -28,6 +23,13 @@ const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTim
             <p><a href="/blog/rss.xml">RSSフィード</a></p>
             {isDev ? <aside class="lu-text-dimmed">（開発ビルドのため、限定公開・非公開の記事も表示しています）</aside> : null}
         </header>
+        {tags.length > 0 && (
+            <nav class="tags" aria-label="タグ">
+                {tags.map(({ tag, count }) => (
+                    <a class="lu-chip lu-chip--dimmed" href={`/blog/tags/${encodeURIComponent(tag)}`}>#{tag} ({count})</a>
+                ))}
+            </nav>
+        )}
         <div class="lu-stack lu-stack--gap-4">
             {posts.map(p => <BlogTitle path={`/blog/${p.slug}`} frontmatter={p.data} />)}
         </div>
@@ -37,5 +39,16 @@ const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTim
 <style lang="scss">
     header {
         margin-bottom: var(--space-8);
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+        margin-bottom: var(--space-8);
+
+        a {
+            text-decoration: none;
+        }
     }
 </style>

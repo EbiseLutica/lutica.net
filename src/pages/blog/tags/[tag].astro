@@ -1,0 +1,48 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Content from '../../../components/Content.astro';
+import BlogTitle from '../../../components/domains/blog/BlogTitle.astro';
+import Layout from '../../../layouts/Layout.astro';
+import { countTags, getListedPosts } from '../../../scripts/blog-posts';
+
+export async function getStaticPaths() {
+    const posts = await getListedPosts();
+    return countTags(posts).map(({ tag }) => ({
+        params: { tag },
+        props: { tag, posts: posts.filter(p => p.data.tags.includes(tag)) },
+    }));
+}
+
+type Props = {
+    tag: string;
+    posts: CollectionEntry<'blog'>[];
+};
+
+const { tag, posts } = Astro.props as Props;
+---
+
+<Layout title={`タグ: ${tag} - ブログ`}>
+    <Content>
+        <header class="lu-prose">
+            <h1>タグ: #{tag}</h1>
+            <p>{posts.length} 件の記事</p>
+        </header>
+        <div class="lu-stack lu-stack--gap-4">
+            {posts.map(p => <BlogTitle path={`/blog/${p.slug}`} frontmatter={p.data} />)}
+        </div>
+        <footer>
+            <a class="lu-button" href="/blog">← ブログ一覧に戻る</a>
+        </footer>
+    </Content>
+</Layout>
+
+<style lang="scss">
+    header {
+        margin-bottom: var(--space-8);
+    }
+
+    footer {
+        margin-top: var(--space-12);
+        text-align: center;
+    }
+</style>

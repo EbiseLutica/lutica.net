@@ -3,6 +3,8 @@
 import { Icon } from 'astro-icon/components';
 import { format } from 'date-fns';
 import { VISIBILITY_LABELS } from '../../../scripts/blog';
+import BlogTags from './BlogTags.astro';
+
 export interface Props {
     path: string;
 	frontmatter: Record<string, any>;
@@ -20,8 +22,9 @@ const isoString = isNaN((frontmatter.date as Date).getTime()) ? '' : (frontmatte
         <h2 class="title">{frontmatter.title}</h2>
         <aside class="lu-text-dimmed lu-text-small">
             <Icon name="tabler:calendar-event" /> <time datetime={isoString}>{dateString}</time>
-            {frontmatter.visibility !== 'public' ? <span class="lu-chip lu-chip--dimmed lu-ms-1">{VISIBILITY_LABELS[frontmatter.visibility]}</span> : null}
+            {frontmatter.visibility !== 'public' ? <span class="lu-chip lu-chip--danger lu-ms-1">{VISIBILITY_LABELS[frontmatter.visibility]}</span> : null}
         </aside>
+        <BlogTags tags={frontmatter.tags} />
         <p>{frontmatter.description}</p>
     </article>
 </a>

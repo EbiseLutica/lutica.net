@@ -27,4 +27,17 @@ collections:
           - { label: "公開", value: "public" }
           - { label: "限定公開（一覧に載せない）", value: "unlisted" }
           - { label: "非公開", value: "private" }
+      - { label: "タグ", name: "tags", widget: "relation", collection: "tags", value_field: "name", search_fields: ["name"], display_fields: ["name"], multiple: true, required: false }
       - { label: "本文", name: "body", widget: "markdown" }
+
+  - name: tags
+    label: タグ
+    label_singular: タグ
+    folder: "src/data/tags"
+    create: true
+    extension: yml
+    format: yaml
+    identifier_field: name
+    slug: "{{name}}"
+    fields:
+      - { label: "タグ名", name: "name", widget: "string" }

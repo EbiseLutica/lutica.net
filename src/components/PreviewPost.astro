@@ -1,12 +1,13 @@
 ---
 import Blog from '../layouts/Blog.astro';
+import type { Visibility } from '../scripts/blog';
 
 type Props = {
     frontmatter: {
         title: string;
         description?: string;
         date: Date;
-        draft: boolean;
+        visibility: Visibility;
     };
     html: string;
 };

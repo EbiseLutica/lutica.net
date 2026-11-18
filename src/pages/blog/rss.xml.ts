@@ -1,11 +1,12 @@
 import rss from '@astrojs/rss';
 import type { APIContext } from 'astro';
 import { getCollection } from 'astro:content';
+import { isListed } from '../../scripts/blog';
 import { SITE_DESCRIPTION } from '../../scripts/const';
 
 export async function GET(context: APIContext) {
 	// 公開記事のみ。新しい順
-	const posts = (await getCollection('blog', ({ data }) => !data.draft))
+	const posts = (await getCollection('blog', ({ data }) => isListed(data)))
 		.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 	return rss({

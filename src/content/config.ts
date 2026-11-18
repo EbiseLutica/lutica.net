@@ -1,4 +1,5 @@
 import { defineCollection, z } from 'astro:content';
+import { VISIBILITIES } from '../scripts/blog';
 
 const blog = defineCollection({
   type: 'content',
@@ -6,7 +7,7 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string().optional(),
     date: z.union([z.string(), z.date()]).transform((v) => new Date(v)),
-    draft: z.boolean().optional().default(false),
+    visibility: z.enum(VISIBILITIES).default('public'),
   }),
 });
 

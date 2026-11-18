@@ -4,11 +4,12 @@ import { getCollection } from 'astro:content';
 import Content from '../../components/Content.astro';
 import BlogTitle from '../../components/domains/blog/BlogTitle.astro';
 import Layout from '../../layouts/Layout.astro';
+import { isListed } from '../../scripts/blog';
 
 const isDev = import.meta.env.DEV;
 
 const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog', ({ data }) => {
-    return isDev || !data.draft;
+    return isDev || isListed(data);
 });
 
 const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
@@ -25,7 +26,7 @@ const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTim
                 暇な方、るちーかのファン、あるいはそれら以外全ての方、どうぞご覧ください。
             </p>
             <p><a href="/blog/rss.xml">RSSフィード</a></p>
-            {isDev ? <aside class="lu-text-dimmed">（開発ビルドのため、下書き記事も表示しています）</aside> : null}
+            {isDev ? <aside class="lu-text-dimmed">（開発ビルドのため、限定公開・非公開の記事も表示しています）</aside> : null}
         </header>
         <div class="lu-stack lu-stack--gap-4">
             {posts.map(p => <BlogTitle path={`/blog/${p.slug}`} frontmatter={p.data} />)}

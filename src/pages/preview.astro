@@ -1,6 +1,7 @@
 ---
 import { createMarkdownProcessor } from '@astrojs/markdown-remark';
 import PreviewPost from '../components/PreviewPost.astro';
+import type { Visibility } from '../scripts/blog';
 
 export const prerender = false;
 
@@ -8,7 +9,7 @@ export const prerender = false;
 // CMS から送られた下書き (frontmatter + markdown 本文) を、実際のブログ記事と同じ Layout で描画して HTML を返す。
 // 同一 origin からのリクエストのみ受け付ける。
 let html = '';
-let frontmatter = { title: '', description: undefined as string | undefined, date: new Date(NaN), draft: false };
+let frontmatter = { title: '', description: undefined as string | undefined, date: new Date(NaN), visibility: 'public' as Visibility };
 let forbidden = false;
 
 if (Astro.request.method === 'POST') {
@@ -19,7 +20,7 @@ if (Astro.request.method === 'POST') {
             title?: string;
             description?: string;
             date?: string;
-            draft?: boolean;
+            visibility?: Visibility;
             body?: string;
         };
         // Workers では実行時の Wasm コンパイルが禁止されるため、Shiki のハイライトは無効化する
@@ -30,7 +31,7 @@ if (Astro.request.method === 'POST') {
             title: data.title ?? '',
             description: data.description,
             date: new Date(data.date ?? ''),
-            draft: data.draft ?? false,
+            visibility: data.visibility ?? 'public',
         };
     }
 }

@@ -2,6 +2,7 @@
 
 import { Icon } from 'astro-icon/components';
 import { format } from 'date-fns';
+import { VISIBILITY_LABELS } from '../../../scripts/blog';
 import BlogTags from './BlogTags.astro';
 
 export interface Props {
@@ -21,7 +22,7 @@ const isoString = isNaN((frontmatter.date as Date).getTime()) ? '' : (frontmatte
         <h2 class="title">{frontmatter.title}</h2>
         <aside class="lu-text-dimmed lu-text-small">
             <Icon name="tabler:calendar-event" /> <time datetime={isoString}>{dateString}</time>
-            {frontmatter.draft ? <span class="lu-chip lu-chip--danger lu-ms-1">下書き</span> : null}
+            {frontmatter.visibility !== 'public' ? <span class="lu-chip lu-chip--danger lu-ms-1">{VISIBILITY_LABELS[frontmatter.visibility]}</span> : null}
         </aside>
         <BlogTags tags={frontmatter.tags} />
         <p>{frontmatter.description}</p>

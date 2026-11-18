@@ -3,10 +3,10 @@ import type { CollectionEntry } from 'astro:content';
 import Content from '../../../components/Content.astro';
 import BlogTitle from '../../../components/domains/blog/BlogTitle.astro';
 import Layout from '../../../layouts/Layout.astro';
-import { countTags, getPublishedPosts } from '../../../scripts/blog';
+import { countTags, getListedPosts } from '../../../scripts/blog-posts';
 
 export async function getStaticPaths() {
-    const posts = await getPublishedPosts();
+    const posts = await getListedPosts();
     return countTags(posts).map(({ tag }) => ({
         params: { tag },
         props: { tag, posts: posts.filter(p => p.data.tags.includes(tag)) },

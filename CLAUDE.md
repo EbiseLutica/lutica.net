@@ -80,7 +80,7 @@ Blog posts use Astro Content Collections:
   - `title` (required)
   - `description` (optional)
   - `date` (required, string transformed to Date)
-  - `draft` (optional, defaults to false)
+  - `visibility` (optional, defaults to `public`): `public` (listed), `unlisted` (page is built with noindex but excluded from the list and RSS), `private` (not built in production; shown only in dev). Helpers live in [src/scripts/blog.ts](src/scripts/blog.ts)
 - Dynamic routes in [src/pages/blog/[...slug].astro](src/pages/blog/[...slug].astro) using `getStaticPaths()`
 - Layout in [src/layouts/Blog.astro](src/layouts/Blog.astro) includes share buttons for Misskey, Mastodon, X, and Web Share API
 

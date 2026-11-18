@@ -19,7 +19,14 @@ collections:
       - { label: "タイトル", name: "title", widget: "string" }
       - { label: "説明", name: "description", widget: "text", required: false }
       - { label: "公開日", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "下書き", name: "draft", widget: "boolean", default: false }
+      - label: "公開状態"
+        name: "visibility"
+        widget: "select"
+        default: "public"
+        options:
+          - { label: "公開", value: "public" }
+          - { label: "限定公開（一覧に載せない）", value: "unlisted" }
+          - { label: "非公開", value: "private" }
       - { label: "タグ", name: "tags", widget: "relation", collection: "tags", value_field: "name", search_fields: ["name"], display_fields: ["name"], multiple: true, required: false }
       - { label: "本文", name: "body", widget: "markdown" }
 

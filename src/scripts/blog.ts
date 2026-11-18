@@ -1,26 +1,21 @@
-import type { CollectionEntry } from 'astro:content';
-import { getCollection } from 'astro:content';
-
 /**
- * 公開対象の記事を新しい順で取得する。開発ビルドでは下書きも含める。
+ * ブログ記事の公開状態。
+ * - public: 公開。一覧・RSS・個別ページすべてに出る
+ * - unlisted: 限定公開。個別ページは生成するが、一覧・RSS には載せず noindex を付ける
+ * - private: 非公開。本番ではページを生成しない（dev のみ表示）
  */
-export async function getPublishedPosts(): Promise<CollectionEntry<'blog'>[]> {
-    const isDev = import.meta.env.DEV;
-    const posts = await getCollection('blog', ({ data }) => isDev || !data.draft);
-    return posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-}
+export const VISIBILITIES = ['public', 'unlisted', 'private'] as const;
 
-/**
- * 記事群に含まれるタグと件数を、件数の多い順で返す。
- */
-export function countTags(posts: CollectionEntry<'blog'>[]): { tag: string; count: number }[] {
-    const counts = new Map<string, number>();
-    for (const post of posts) {
-        for (const tag of post.data.tags) {
-            counts.set(tag, (counts.get(tag) ?? 0) + 1);
-        }
-    }
-    return [...counts]
-        .map(([tag, count]) => ({ tag, count }))
-        .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag, 'ja'));
-}
+export type Visibility = typeof VISIBILITIES[number];
+
+export const VISIBILITY_LABELS: Record<Visibility, string> = {
+	public: '公開',
+	unlisted: '限定公開',
+	private: '非公開',
+};
+
+/** 一覧・RSS に載せるかどうか */
+export const isListed = (data: { visibility?: Visibility }) => data.visibility === 'public';
+
+/** 本番でページを生成するかどうか */
+export const isPublished = (data: { visibility?: Visibility }) => data.visibility !== 'private';

@@ -1,6 +1,7 @@
 ---
 import Content from '../components/Content.astro';
 import SnsShare from '../components/SnsShare.astro';
+import BlogTags from '../components/domains/blog/BlogTags.astro';
 import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
 import { format } from 'date-fns';
@@ -21,6 +22,7 @@ const shareTitle = `${frontmatter.title} - るちーかの長いノート`;
                 <aside class="lu-text-dimmed">
                     <Icon name="tabler:calendar-event"/> <time datetime={isoString}>{dateString}</time>
                 </aside>
+                <BlogTags tags={frontmatter.tags} link />
             </header>
             <article class="lu-card lu-card--article lu-prose">
                 <slot />
@@ -42,6 +44,10 @@ const shareTitle = `${frontmatter.title} - るちーかの長いノート`;
 
             h1 {
                 margin: 0;
+            }
+
+            :global(.tags) {
+                justify-content: center;
             }
         }
 

@@ -20,4 +20,17 @@ collections:
       - { label: "説明", name: "description", widget: "text", required: false }
       - { label: "公開日", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "下書き", name: "draft", widget: "boolean", default: false }
+      - { label: "タグ", name: "tags", widget: "relation", collection: "tags", value_field: "name", search_fields: ["name"], display_fields: ["name"], multiple: true, required: false }
       - { label: "本文", name: "body", widget: "markdown" }
+
+  - name: tags
+    label: タグ
+    label_singular: タグ
+    folder: "src/data/tags"
+    create: true
+    extension: yml
+    format: yaml
+    identifier_field: name
+    slug: "{{name}}"
+    fields:
+      - { label: "タグ名", name: "name", widget: "string" }

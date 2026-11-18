@@ -8,7 +8,7 @@ export const prerender = false;
 // CMS から送られた下書き (frontmatter + markdown 本文) を、実際のブログ記事と同じ Layout で描画して HTML を返す。
 // 同一 origin からのリクエストのみ受け付ける。
 let html = '';
-let frontmatter = { title: '', description: undefined as string | undefined, date: new Date(NaN), draft: false };
+let frontmatter = { title: '', description: undefined as string | undefined, date: new Date(NaN), draft: false, tags: [] as string[] };
 let forbidden = false;
 
 if (Astro.request.method === 'POST') {
@@ -20,6 +20,7 @@ if (Astro.request.method === 'POST') {
             description?: string;
             date?: string;
             draft?: boolean;
+            tags?: string[];
             body?: string;
         };
         // Workers では実行時の Wasm コンパイルが禁止されるため、Shiki のハイライトは無効化する
@@ -31,6 +32,7 @@ if (Astro.request.method === 'POST') {
             description: data.description,
             date: new Date(data.date ?? ''),
             draft: data.draft ?? false,
+            tags: data.tags ?? [],
         };
     }
 }
